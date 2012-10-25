@@ -1,0 +1,13 @@
+/*
+Theme Name: Tabula Rasa
+Theme URI: 
+Description: A blank slate for 
+Version: 3.0
+Author: Chris Cox
+Author URI: http://www.renaissance-design.net
+Tags: clean, basic, framework
+*/
+
+@import "css/reset.css";
+@import "css/typography.css";
+@import "css/layout.css";
