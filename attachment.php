@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-
+<div class="content" role="main">
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 				<p><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php esc_attr( printf( __( 'Return to %s', 'twentyten' ), get_the_title( $post->post_parent ) ) ); ?>" rel="gallery"><?php
@@ -94,5 +94,5 @@ get_header(); ?>
 <?php comments_template(); ?>
 
 <?php endwhile; ?>
-
+                                        </div>
 <?php get_footer(); ?>

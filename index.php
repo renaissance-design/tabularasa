@@ -14,7 +14,7 @@
  */
 
 get_header(); ?>
-
+<div class="content" role="main">
 			<?php
 			/* Run the loop to output the posts.
 			 * If you want to overload this in a child theme then include a file
@@ -22,6 +22,6 @@ get_header(); ?>
 			 */
 			 get_template_part( 'loop', 'index' );
 			?>
-
+</div>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

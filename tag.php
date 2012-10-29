@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-
+<div class="content" role="main">
 				<h1><?php
 					printf( __( 'Tag Archives: %s', 'twentyten' ), '' . single_tag_title( '', false ) . '' );
 				?></h1>
@@ -20,6 +20,6 @@ get_header(); ?>
  */
  get_template_part( 'loop', 'tag' );
 ?>
-
+</div>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

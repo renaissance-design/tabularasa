@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-
+<div class="content" role="main">
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 					<?php previous_post_link( '%link', '' . _x( '&larr;', 'Previous post link', 'twentyten' ) . ' %title' ); ?>
@@ -39,6 +39,6 @@ get_header(); ?>
 				<?php comments_template( '', true ); ?>
 
 <?php endwhile; // end of the loop. ?>
-
+</div>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

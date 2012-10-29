@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-
+<div class="content" role="main">
 
 
 				<h1><?php _e( 'Not Found', 'twentyten' ); ?></h1>
@@ -19,5 +19,5 @@ get_header(); ?>
 		// focus on search field after it has loaded
 		document.getElementById('s') && document.getElementById('s').focus();
 	</script>
-
+</div>
 <?php get_footer(); ?>
