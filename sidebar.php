@@ -7,7 +7,7 @@
  * @since TabulaRasa 1.0
  */
 ?>
-
+<aside class="sidebar" role="complementary">
 			<ul class="xoxo">
 
 <?php
@@ -50,3 +50,4 @@
 			</ul>
 
 <?php endif; ?>
+</aside>
