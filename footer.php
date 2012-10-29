@@ -10,17 +10,13 @@
  * @since TabulaRasa 1.0
  */
 ?>
-
-    <?php
-            /* A sidebar in the footer? Yep. You can can customize
-             * your footer with four columns of widgets.
-             */
-            get_sidebar( 'footer' );
-    ?>
+        <footer>
+    <?php get_sidebar( 'footer' ); ?>
 
                             <a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
                             <a href="http://wordpress.org/" title="Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress </a>
-
+        </footer>
+    </div>
     <?php
             /* Always have wp_footer() just before the closing </body>
              * tag of your theme, or you will break many plugins, which
@@ -29,6 +25,5 @@
 
             wp_footer();
     ?>
-    </div>
 </body>
 </html>
