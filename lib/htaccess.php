@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 
+ */
 class TabulaRasa_htaccess {
 
     public $slug;
@@ -42,7 +45,7 @@ class TabulaRasa_htaccess {
      * @param type $content
      * @return type
      */
-    function htaccess_add_rules($content) {
+    function htaccess_add_rules() {
         global $wp_rewrite;
         $home_path = function_exists('get_home_path') ? get_home_path() : ABSPATH;
         $htaccess_file = $home_path . '.htaccess';
@@ -50,15 +53,15 @@ class TabulaRasa_htaccess {
                
         if ((!file_exists($htaccess_file) && is_writable($home_path) && $wp_rewrite->using_mod_rewrite_permalinks()) || is_writable($htaccess_file)) {
             if($mod_rewrite_enabled) {
-                $firewall_rules = extract_from_markers($htaccess_file, '5G FIREWALL');
+                $firewall_rules = extract_from_markers($htaccess_file, 'Tabula Rasa');
                 if($firewall_rules === array()) {
                     $filename = dirname(__FILE__) . '/TR-htaccess';
-                    return insert_with_markers($htaccess_file, '5G FIREWALL', extract_from_markers($filename, '5G FIREWALL'));
+                    return insert_with_markers($htaccess_file, 'Tabula Rasa', extract_from_markers($filename, 'Tabula Rasa'));
                 }
             }
         }
         
-        return $content;
+        return false;
     }
 
 }

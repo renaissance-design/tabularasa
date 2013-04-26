@@ -46,3 +46,52 @@
 	margin-left: 0;
 	clear: left;
 }
+
+/* Specific WordPress selectors */
+
+.wrapper {
+    width: 978px;
+    margin: 0 auto;
+}
+
+header, nav, footer {
+    width: 978px;
+    clear: both;
+    margin-bottom: 21px;
+}
+
+.menu {
+    overflow: hidden;
+    
+}
+
+.menu li {
+    float: left;
+    margin-right: 30px;
+}
+
+.content {
+    width: 642px;
+    float: left;
+    clear: left;
+    margin-bottom: 21px;
+}
+
+.page-template-onecolumn-page-php .content {
+    width: 978px;
+    float: none;
+}
+
+.sidebar {
+    width: 306px;
+    float: left;
+    margin: 0 0 21px 30px;
+}
+
+header, footer, nav, .content, .sidebar {
+    outline: 1px dotted #ccc;
+}
+
+.xoxo>li {
+    margin-bottom: 21px;
+}
