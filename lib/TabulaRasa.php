@@ -13,6 +13,11 @@ class TabulaRasa {
   public $slug;
   private $htaccess;
 
+  /**
+   * Constructor for the framework class
+   * 
+   * @param string $slug
+   */
   public function __construct($slug = 'tabularasa') {
 
     $this->slug = $slug;
@@ -55,6 +60,8 @@ class TabulaRasa {
 
   /**
    * Sets theme defaults
+   * 
+   * @return void
    */
   function setup() {
     load_theme_textdomain($this->slug, get_template_directory() . '/lang');
@@ -69,6 +76,8 @@ class TabulaRasa {
 
   /**
    * Includes additional widgets
+   * 
+   * @return void
    */
   function widgets() {
     require_once('widgets.php');
@@ -76,6 +85,8 @@ class TabulaRasa {
 
   /**
    * Replaces WordPress' built-in jQuery from the Google CDN
+   * 
+   * @return void
    */
   function bulletproof_jquery() {
     $protocol = ($_SERVER['HTTPS'] == 'on') ? 'https' : 'http';
