@@ -90,21 +90,22 @@ class TabulaRasa {
    */
   function bulletproof_jquery() {
     $protocol = ($_SERVER['HTTPS'] == 'on') ? 'https' : 'http';
-    $url = $protocol . '://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js';
+    $jquery_version = $GLOBALS['wp_scripts']->registered['jquery-core']->ver;
+    $url = $protocol . '://ajax.googleapis.com/ajax/libs/jquery/' . $jquery_version . '/jquery.min.js';
     wp_deregister_script('jquery');
     if (get_transient('google_jquery') == true) {
-      wp_register_script('jquery', $url, array(), null, true);
+      wp_register_script('jquery', $url, array(), $jquery_version, true);
     }
     else {
       $resp = wp_remote_head($url);
       if (!is_wp_error($resp) && 200 == $resp['response']['code']) {
         set_transient('google_jquery', true, 60 * 5);
-        wp_register_script('jquery', $url, array(), null, true);
+        wp_register_script('jquery', $url, array(), $jquery_version, true);
       }
       else {
         set_transient('google_jquery', false, 60 * 5);
         $url = get_bloginfo('wpurl') . '/wp-includes/js/jquery/jquery.js';
-        wp_register_script('jquery', $url, array(), '1.7.1', true);
+        wp_register_script('jquery', $url, array(), $jquery_version, true);
       }
     }
     wp_enqueue_script('jquery');
