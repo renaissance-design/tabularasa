@@ -11,8 +11,8 @@
  * Initial theme setup. Custom functions must be added below this point.
  */
 require_once(locate_template('/lib/TabulaRasa.php'));
-
 $TabulaRasa = TabulaRasa::get_instance();
+
 
 
 function twentyten_filter_wp_title( $title, $separator ) {
