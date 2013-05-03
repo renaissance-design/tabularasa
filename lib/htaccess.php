@@ -42,7 +42,7 @@ class TabulaRasa_htaccess {
      * @param type $content
      * @return type
      */
-    function htaccess_add_rules() {
+    function htaccess_add_rules($content) {
         global $wp_rewrite;
         $home_path = function_exists('get_home_path') ? get_home_path() : ABSPATH;
         $htaccess_file = $home_path . '.htaccess';
@@ -58,7 +58,7 @@ class TabulaRasa_htaccess {
             }
         }
         
-        return false;
+        return $content;
     }
 
 }
