@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ * Sets up the .htaccess file
  */
 class TabulaRasa_htaccess {
 
@@ -14,9 +14,6 @@ class TabulaRasa_htaccess {
         add_action('admin_init', array(&$this, 'htaccess_write_check'));
         
         add_action('generate_rewrite_rules', array(&$this, 'htaccess_add_rules'));
-        
-        global $wp_rewrite;
-        $wp_rewrite->flush_rules();
                
     }
 
