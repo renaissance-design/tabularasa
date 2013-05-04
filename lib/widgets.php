@@ -1,6 +1,20 @@
 <?php
 
 /**
+ * Hook custom widget registration to widgets_init
+ */
+add_action('widgets_init', 'TR_register_widgets');
+
+/**
+ * Register all custom widgets
+ * 
+ * @return void
+ */
+function TR_register_widgets() {
+    register_widget('TR_Twitter_Widget');
+}
+
+/**
  * A widget to display a user's latest tweets
  */
 class RD_Twitter_Widget extends WP_Widget {
