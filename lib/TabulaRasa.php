@@ -113,7 +113,7 @@ class TabulaRasa {
 		global $wp_scripts;
 
 		$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? 'https' : 'http';
-		$jquery_version = $wp_scripts->registered['jquery-core']->ver;
+		$jquery_version = $wp_scripts->registered['jquery']->ver;
 		$url = $protocol . '://ajax.googleapis.com/ajax/libs/jquery/' . $jquery_version . '/jquery.min.js';
 		wp_deregister_script('jquery');
 		if (get_transient('google_jquery') == true) {
