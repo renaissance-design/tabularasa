@@ -17,7 +17,7 @@ function TR_register_widgets() {
 /**
  * A widget to display a user's latest tweets
  */
-class RD_Twitter_Widget extends WP_Widget {
+class TR_Twitter_Widget extends WP_Widget {
 
 	function __construct() {
 		/* Widget settings. */
@@ -27,7 +27,7 @@ class RD_Twitter_Widget extends WP_Widget {
 		$control_ops = array('width' => 300, 'height' => 350, 'id_base' => 'twitter-widget');
 
 		/* Create the widget. */
-		parent::__construct('twitter-widget', 'RD Twitter Widget', $widget_ops, $control_ops);
+		parent::__construct('twitter-widget', 'Twitter Widget', $widget_ops, $control_ops);
 	}
 
 	function widget($args, $instance) {
