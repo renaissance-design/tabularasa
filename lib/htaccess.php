@@ -2,6 +2,8 @@
 
 /**
  * Sets up the .htaccess file
+ * 
+ * @todo: rewrite to filter mod_rewrite_rules hook, for efficiency (single file read/write)
  */
 class TabulaRasa_htaccess {
 
@@ -13,7 +15,7 @@ class TabulaRasa_htaccess {
 
         add_action('admin_init', array(&$this, 'htaccess_write_check'));
         
-        add_action('generate_rewrite_rules', array(&$this, 'htaccess_add_rules'));
+        add_action('generate_rewrite_rules', array(&$this, 'htaccess_add_rules'), 1);
                
     }
 
@@ -51,10 +53,8 @@ class TabulaRasa_htaccess {
         if ((!file_exists($htaccess_file) && is_writable($home_path) && $wp_rewrite->using_mod_rewrite_permalinks()) || is_writable($htaccess_file)) {
             if($mod_rewrite_enabled) {
                 $firewall_rules = extract_from_markers($htaccess_file, 'Tabula Rasa');
-                if($firewall_rules === array()) {
-                    $filename = dirname(__FILE__) . '/TR-htaccess';
+                    $filename = dirname(__FILE__) . '/TR-htaccess.php';
                     return insert_with_markers($htaccess_file, 'Tabula Rasa', extract_from_markers($filename, 'Tabula Rasa'));
-                }
             }
         }
         
