@@ -185,15 +185,4 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
   Satisfy All
 </FilesMatch>
 
-#disallow comment posting with no or foreign referrer - bye bye, spambots
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteCond %{REQUEST_METHOD} POST
-RewriteCond %{REQUEST_URI} .wp-comments-post\.php*
-#NB: replace with your own domain 
-RewriteCond %{HTTP_REFERER} !.*<?php echo parse_url(get_home_url(), PHP_URL_HOST); ?>.* [OR]
-RewriteCond %{HTTP_USER_AGENT} ^$
-RewriteRule (.*) ^http://%{REMOTE_ADDR}/$ [R=301,L]
-</IfModule>
-
 # END Tabula Rasa
