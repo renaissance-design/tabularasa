@@ -10,7 +10,7 @@
 get_header(); ?>
 <div class="content" role="main">
 				<h1><?php
-					printf( __( 'Category Archives: %s', 'twentyten' ), '' . single_cat_title( '', false ) . '' );
+					printf( __( 'Category Archives: %s', TabulaRasa::get_textdomain() ), '' . single_cat_title( '', false ) . '' );
 				?></h1>
 				<?php
 					$category_description = category_description();

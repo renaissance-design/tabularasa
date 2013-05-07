@@ -10,7 +10,7 @@
 get_header(); ?>
 <div class="content" role="main">
 				<h1><?php
-					printf( __( 'Tag Archives: %s', 'twentyten' ), '' . single_tag_title( '', false ) . '' );
+					printf( __( 'Tag Archives: %s', TabulaRasa::get_textdomain() ), '' . single_tag_title( '', false ) . '' );
 				?></h1>
 
 <?php

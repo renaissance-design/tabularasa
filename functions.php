@@ -34,7 +34,7 @@ add_filter('excerpt_length', 'twentyten_excerpt_length');
  * @return string "Continue Reading" link
  */
 function twentyten_continue_reading_link() {
-	return ' <a href="' . get_permalink() . '">' . __('Continue reading <span class="meta-nav">&rarr;</span>', 'twentyten') . '</a>';
+	return ' <a href="' . get_permalink() . '">' . __('Continue reading <span class="meta-nav">&rarr;</span>', TabulaRasa::get_textdomain()) . '</a>';
 }
 
 /**
@@ -91,18 +91,18 @@ if (!function_exists('twentyten_comment')) :
 					<div id="comment-<?php comment_ID(); ?>">
 						<div class="comment-author vcard">
 				<?php echo get_avatar($comment, 40); ?>
-						<?php printf(__('%s <span class="says">says:</span>', 'twentyten'), sprintf('<cite class="fn">%s</cite>', get_comment_author_link())); ?>
+						<?php printf(__('%s <span class="says">says:</span>', TabulaRasa::get_textdomain()), sprintf('<cite class="fn">%s</cite>', get_comment_author_link())); ?>
 						</div><!-- .comment-author .vcard -->
 				<?php if ($comment->comment_approved == '0') : ?>
-							<em><?php _e('Your comment is awaiting moderation.', 'twentyten'); ?></em>
+							<em><?php _e('Your comment is awaiting moderation.', TabulaRasa::get_textdomain()); ?></em>
 							<br />
 								<?php endif; ?>
 
 						<div class="comment-meta commentmetadata"><a href="<?php echo esc_url(get_comment_link($comment->comment_ID)); ?>">
 				<?php
 				/* translators: 1: date, 2: time */
-				printf(__('%1$s at %2$s', 'twentyten'), get_comment_date(), get_comment_time());
-				?></a><?php edit_comment_link(__('(Edit)', 'twentyten'), ' ');
+				printf(__('%1$s at %2$s', TabulaRasa::get_textdomain()), get_comment_date(), get_comment_time());
+				?></a><?php edit_comment_link(__('(Edit)', TabulaRasa::get_textdomain()), ' ');
 				?>
 						</div><!-- .comment-meta .commentmetadata -->
 
@@ -119,7 +119,7 @@ if (!function_exists('twentyten_comment')) :
 			case 'trackback' :
 				?>
 				<li class="post pingback">
-					<p><?php _e('Pingback:', 'twentyten'); ?> <?php comment_author_link(); ?><?php edit_comment_link(__('(Edit)', 'twentyten'), ' '); ?></p>
+					<p><?php _e('Pingback:', TabulaRasa::get_textdomain()); ?> <?php comment_author_link(); ?><?php edit_comment_link(__('(Edit)', TabulaRasa::get_textdomain()), ' '); ?></p>
 					<?php
 					break;
 			endswitch;
@@ -139,9 +139,9 @@ if (!function_exists('twentyten_comment')) :
 	function twentyten_widgets_init() {
 		// Area 1, located at the top of the sidebar.
 		register_sidebar(array(
-				'name' => __('Primary Widget Area', 'twentyten'),
+				'name' => __('Primary Widget Area', TabulaRasa::get_textdomain()),
 				'id' => 'primary-widget-area',
-				'description' => __('The primary widget area', 'twentyten'),
+				'description' => __('The primary widget area', TabulaRasa::get_textdomain()),
 				'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 				'after_widget' => '</li>',
 				'before_title' => '<h3 class="widget-title">',
@@ -150,9 +150,9 @@ if (!function_exists('twentyten_comment')) :
 
 		// Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
 		register_sidebar(array(
-				'name' => __('Secondary Widget Area', 'twentyten'),
+				'name' => __('Secondary Widget Area', TabulaRasa::get_textdomain()),
 				'id' => 'secondary-widget-area',
-				'description' => __('The secondary widget area', 'twentyten'),
+				'description' => __('The secondary widget area', TabulaRasa::get_textdomain()),
 				'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 				'after_widget' => '</li>',
 				'before_title' => '<h3 class="widget-title">',
@@ -161,9 +161,9 @@ if (!function_exists('twentyten_comment')) :
 
 		// Area 3, located in the footer. Empty by default.
 		register_sidebar(array(
-				'name' => __('First Footer Widget Area', 'twentyten'),
+				'name' => __('First Footer Widget Area', TabulaRasa::get_textdomain()),
 				'id' => 'first-footer-widget-area',
-				'description' => __('The first footer widget area', 'twentyten'),
+				'description' => __('The first footer widget area', TabulaRasa::get_textdomain()),
 				'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 				'after_widget' => '</li>',
 				'before_title' => '<h3 class="widget-title">',
@@ -172,9 +172,9 @@ if (!function_exists('twentyten_comment')) :
 
 		// Area 4, located in the footer. Empty by default.
 		register_sidebar(array(
-				'name' => __('Second Footer Widget Area', 'twentyten'),
+				'name' => __('Second Footer Widget Area', TabulaRasa::get_textdomain()),
 				'id' => 'second-footer-widget-area',
-				'description' => __('The second footer widget area', 'twentyten'),
+				'description' => __('The second footer widget area', TabulaRasa::get_textdomain()),
 				'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 				'after_widget' => '</li>',
 				'before_title' => '<h3 class="widget-title">',
@@ -183,9 +183,9 @@ if (!function_exists('twentyten_comment')) :
 
 		// Area 5, located in the footer. Empty by default.
 		register_sidebar(array(
-				'name' => __('Third Footer Widget Area', 'twentyten'),
+				'name' => __('Third Footer Widget Area', TabulaRasa::get_textdomain()),
 				'id' => 'third-footer-widget-area',
-				'description' => __('The third footer widget area', 'twentyten'),
+				'description' => __('The third footer widget area', TabulaRasa::get_textdomain()),
 				'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 				'after_widget' => '</li>',
 				'before_title' => '<h3 class="widget-title">',
@@ -194,9 +194,9 @@ if (!function_exists('twentyten_comment')) :
 
 		// Area 6, located in the footer. Empty by default.
 		register_sidebar(array(
-				'name' => __('Fourth Footer Widget Area', 'twentyten'),
+				'name' => __('Fourth Footer Widget Area', TabulaRasa::get_textdomain()),
 				'id' => 'fourth-footer-widget-area',
-				'description' => __('The fourth footer widget area', 'twentyten'),
+				'description' => __('The fourth footer widget area', TabulaRasa::get_textdomain()),
 				'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 				'after_widget' => '</li>',
 				'before_title' => '<h3 class="widget-title">',
@@ -215,8 +215,8 @@ if (!function_exists('twentyten_comment')) :
 		 * @since Twenty Ten 1.0
 		 */
 		function twentyten_posted_on() {
-			printf(__('<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'twentyten'), 'meta-prep meta-prep-author', sprintf('<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>', get_permalink(), esc_attr(get_the_time()), get_the_date()
-							), sprintf('<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>', get_author_posts_url(get_the_author_meta('ID')), sprintf(esc_attr__('View all posts by %s', 'twentyten'), get_the_author()), get_the_author()
+			printf(__('<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', TabulaRasa::get_textdomain()), 'meta-prep meta-prep-author', sprintf('<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>', get_permalink(), esc_attr(get_the_time()), get_the_date()
+							), sprintf('<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>', get_author_posts_url(get_the_author_meta('ID')), sprintf(esc_attr__('View all posts by %s', TabulaRasa::get_textdomain()), get_the_author()), get_the_author()
 							)
 			);
 		}
@@ -234,11 +234,11 @@ if (!function_exists('twentyten_comment')) :
 			// Retrieves tag list of current post, separated by commas.
 			$tag_list = get_the_tag_list('', ', ');
 			if ($tag_list) {
-				$posted_in = __('This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyten');
+				$posted_in = __('This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', TabulaRasa::get_textdomain());
 			} elseif (is_object_in_taxonomy(get_post_type(), 'category')) {
-				$posted_in = __('This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyten');
+				$posted_in = __('This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', TabulaRasa::get_textdomain());
 			} else {
-				$posted_in = __('Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'twentyten');
+				$posted_in = __('Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', TabulaRasa::get_textdomain());
 			}
 			// Prints the string, replacing the placeholders.
 			printf(

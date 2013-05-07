@@ -44,7 +44,7 @@
 			</header>
 			<nav role="navigation" class="menu">
 				<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
-				<a href="#content" class="access" title="<?php esc_attr_e('Skip to content', 'twentyten'); ?>"><?php _e('Skip to content', 'twentyten'); ?></a>
+				<a href="#content" class="access" title="<?php esc_attr_e('Skip to content', TabulaRasa::get_textdomain()); ?>"><?php _e('Skip to content', TabulaRasa::get_textdomain()); ?></a>
 				<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
 				<?php wp_nav_menu(array('container' => false, 'theme_location' => 'primary')); ?>
 			</nav><!-- #access -->

@@ -47,6 +47,15 @@ class TabulaRasa {
 		}
 		return self::$instance;
 	}
+	
+	/**
+	 * Returns the theme's textdomain for use in templates
+	 * 
+	 * @return string
+	 */
+	public static function get_textdomain() {
+		return self::$instance->slug;
+	}
 
 	/**
 	 * Hooks to WP init()
