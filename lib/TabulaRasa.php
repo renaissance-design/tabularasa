@@ -31,11 +31,11 @@ class TabulaRasa {
 			require_once(locate_template('/lib/htaccess.php'));
 			$this->htaccess = new TabulaRasa_htaccess($this->slug);
 		}
-		
-		if(!class_exists('SmartMetaBox')) {
+
+		if (!class_exists('SmartMetaBox')) {
 			require_once(locate_template('/lib/meta.php'));
 		}
-		
+
 		add_action('widgets_init', array(&$this, 'register_widgets'));
 	}
 
@@ -51,7 +51,7 @@ class TabulaRasa {
 		}
 		return self::$instance;
 	}
-	
+
 	/**
 	 * Returns the theme's textdomain for use in templates
 	 * 
@@ -84,10 +84,13 @@ class TabulaRasa {
 		add_action('wp_enqueue_scripts', array(&$this, 'bulletproof_jquery'), 20);
 		add_filter('wp_page_menu_args', array(&$this, 'page_menu_args'));
 		$this->cleanup_header();
+		$this->cleanup_nav();
 	}
 
 	/**
 	 * Clean up the header
+	 * 
+	 * @return void
 	 */
 	function cleanup_header() {
 		remove_action('wp_head', 'wp_generator');
@@ -107,13 +110,23 @@ class TabulaRasa {
 		add_filter('wp_title', array(&$this, 'filter_wp_title'), 10, 2);
 		add_action('widgets_init', array(&$this, 'remove_recent_comments_style'));
 	}
+	
+	/**
+	 * Cleans up the default output of WP menus
+	 * 
+	 * @return void
+	 */
+	function cleanup_nav() {
+		add_filter('wp_nav_menu', array(&$this, 'cleanup_nav_menu'));
+		add_filter('wp_page_menu', array(&$this, 'cleanup_nav_menu'));
+	}
 
 	/**
 	 * Includes additional widgets
 	 * 
 	 * @return void
 	 */
-	function register_widgets() {		
+	function register_widgets() {
 		require_once(locate_template('/lib/widgets.php'));
 		register_widget('TabulaRasa_Twitter_Widget');
 	}
@@ -212,6 +225,26 @@ class TabulaRasa {
 	function page_menu_args($args) {
 		$args['show_home'] = true;
 		return $args;
+	}
+
+	/**
+	 * Replaces the many default active menu classes with one
+	 * 
+	 * @param string $menu
+	 * @return string
+	 */
+	function cleanup_nav_menu($menu) {
+		$replace = array(
+				'current-menu-item' => 'active',
+				'current-menu-parent' => 'active',
+				'current-menu-ancestor' => 'active',
+				'current_page_item' => 'active',
+				'current_page_parent' => 'active',
+				'current_page_ancestor' => 'active',
+		);
+
+		$menu = str_replace(array_keys($replace), $replace, $menu);
+		return $menu;
 	}
 
 }

@@ -14,13 +14,14 @@ $TabulaRasa = TabulaRasa::get_instance();
 
 function TabulaRasa_setup() {
 	register_nav_menus(array(
-				'primary_navigation' => __('Primary Navigation', TabulaRasa::get_textdomain()),
+			'primary' => __('Primary Navigation', TabulaRasa::get_textdomain()),
+			'secondary' => __('Secondary Navigation', TabulaRasa::get_textdomain())
 		));
 		add_theme_support('post-thumbnails');
 		add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 }
 
-add_action('after_theme_setup', 'TabulaRasa_setup');
+add_action('init', 'TabulaRasa_setup');
 
 /**
  * Sets the post excerpt length to 40 characters.
