@@ -95,6 +95,7 @@ class TabulaRasa {
 		remove_action('wp_head', 'feed_links_extra', 3);
 		add_filter('use_default_gallery_style', '__return_false');
 		add_filter('style_loader_tag', array(&$this, 'cleanup_type'));
+		add_filter('wp_title', array(&$this, 'filter_wp_title'), 10, 2);
 	}
 
 	/**
@@ -133,6 +134,44 @@ class TabulaRasa {
 		}
 		wp_enqueue_script('jquery');
 	}
+	
+	/**
+	 * Filters the default output of wp_title()
+	 * 
+	 * @global int $paged
+	 * @global int $page
+	 * @param string $title
+	 * @param string $separator
+	 * @return string
+	 */
+	function filter_wp_title($title, $separator) {
+	
+	if (is_feed()) {
+		return $title;
+	}
+
+	global $paged, $page;
+	
+	$site_name = get_bloginfo('name', 'display');
+	$site_description = get_bloginfo('description', 'display');
+
+	if(is_search()) {
+		$title = sprintf( __('Search results for %s', $this->slug), '"' . get_search_query() . '"');
+		if ( $paged >= 2 )
+			$title .= ' ' . $separator . ' ' . sprintf( __('Page %s', $this->slug), $paged);
+		$title .= ' ' . $separator . ' ' . $site_name;
+		return $title;
+	}
+
+	if ($site_description && (is_home())) {
+		$title .= $site_description;
+	}
+	if ( $paged >= 2 || $page >= 2 ) {
+		$title .= ' ' . $separator . ' ' . sprintf( __('Page %s', $this->slug ), max($paged, $page));
+	}
+	$title .= ' ' . $separator . ' ' . $site_name;
+	return $title;
+}
 
 	/**
 	 * Strip the unnecessary type attribute from <style> elements
