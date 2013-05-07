@@ -76,11 +76,6 @@ class TabulaRasa {
 	 */
 	function setup() {
 		load_theme_textdomain($this->slug, get_template_directory() . '/lang');
-		register_nav_menus(array(
-				'primary_navigation' => __('Primary Navigation', $this->slug),
-		));
-		add_theme_support('post-thumbnails');
-		add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 		add_editor_style('css/editor-style.css');
 		add_action('wp_enqueue_scripts', array(&$this, 'bulletproof_jquery'), 20);
 		add_filter('wp_page_menu_args', array(&$this, 'page_menu_args'));
