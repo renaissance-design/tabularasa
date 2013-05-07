@@ -28,8 +28,12 @@ class TabulaRasa {
 		add_action('after_setup_theme', array(&$this, 'setup'));
 
 		if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_SOFTWARE'], 'litespeed') !== false) {
-			require_once('htaccess.php');
+			require_once(locate_template('/lib/htaccess.php'));
 			$this->htaccess = new TabulaRasa_htaccess($this->slug);
+		}
+		
+		if(!class_exists('SmartMetaBox')) {
+			require_once(locate_template('/lib/meta.php'));
 		}
 		
 		add_action('widgets_init', array(&$this, 'register_widgets'));

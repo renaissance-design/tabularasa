@@ -10,6 +10,7 @@
  * @version: 1.0
  *
  */
+
 class SmartMetaBox {
 
     protected $meta_box;
