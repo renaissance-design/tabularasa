@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Sets up the .htaccess file
+ * Sets up the .htaccess file, adding custom rules
  */
 class TabulaRasa_htaccess {
 
@@ -19,6 +19,8 @@ class TabulaRasa_htaccess {
 
     /**
      * Checks if the .htaccess file is writable. If not, queues an error if the current user is admin.
+		 * 
+		 * @return void
      */
     function htaccess_write_check() {
         if (!is_writable(get_home_path() . '.htaccess')) {
@@ -30,6 +32,8 @@ class TabulaRasa_htaccess {
 
     /**
      * Displays an error notification if the .htaccess file isn't writable
+		 * 
+		 * @return void
      */
     function htaccess_writable_error() {
         echo '<div class="error"><p>' . sprintf(__('Please make sure your <a href="%s">.htaccess</a> file is writable ', $this->slug), admin_url('options-permalink.php')) . '</p></div>';
@@ -38,9 +42,9 @@ class TabulaRasa_htaccess {
     /**
      * Adds extra goodness whenever WP writes to .htaccess
      * 
-     * @global type $wp_rewrite
-     * @param type $content
-     * @return type
+     * @global object $wp_rewrite
+     * @param string $content
+     * @return bool
      */
     function htaccess_add_rules($content) {
         global $wp_rewrite;
