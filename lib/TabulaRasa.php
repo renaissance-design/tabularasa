@@ -164,12 +164,12 @@ class TabulaRasa {
 	}
 
 	if ($site_description && (is_home())) {
-		$title .= $site_description;
+		$title .= $site_description . ' ' . $separator;
 	}
 	if ( $paged >= 2 || $page >= 2 ) {
 		$title .= ' ' . $separator . ' ' . sprintf( __('Page %s', $this->slug ), max($paged, $page));
 	}
-	$title .= ' ' . $separator . ' ' . $site_name;
+	$title .= ' ' . $site_name;
 	return $title;
 }
 
