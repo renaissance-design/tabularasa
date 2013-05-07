@@ -30,6 +30,8 @@ class TabulaRasa {
 			require_once('htaccess.php');
 			$this->htaccess = new TabulaRasa_htaccess($this->slug);
 		}
+		
+		require_once('widgets.php');
 	}
 
 	/**
@@ -132,6 +134,12 @@ class TabulaRasa {
 		wp_enqueue_script('jquery');
 	}
 
+	/**
+	 * Strip the unnecessary type attribute from <style> elements
+	 * 
+	 * @param string $src
+	 * @return string
+	 */
 	function cleanup_type($src) {
 		return str_replace("type='text/css'", '', $src);
 	}
