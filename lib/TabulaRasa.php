@@ -31,8 +31,8 @@ class TabulaRasa {
 			require_once('htaccess.php');
 			$this->htaccess = new TabulaRasa_htaccess($this->slug);
 		}
-
-		$this->widgets();
+		
+		add_action('widgets_init', array(&$this, 'register_widgets'));
 	}
 
 	/**
@@ -114,8 +114,9 @@ class TabulaRasa {
 	 * 
 	 * @return void
 	 */
-	function widgets() {
-		require_once('widgets.php');
+	function register_widgets() {		
+		require_once(locate_template('/lib/widgets.php'));
+		register_widget('TabulaRasa_Twitter_Widget');
 	}
 
 	/**
