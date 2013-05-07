@@ -16,11 +16,12 @@ class TabulaRasa {
 	/**
 	 * Constructor for the framework class
 	 * 
-	 * @param string $slug
 	 */
-	public function __construct($slug = 'tabularasa') {
+	public function __construct() {
 
-		$this->slug = $slug;
+		$theme = wp_get_theme();
+
+		$this->slug = sanitize_title_with_dashes($theme->name);
 
 		add_action('init', array(&$this, 'init'));
 
@@ -31,7 +32,7 @@ class TabulaRasa {
 			$this->htaccess = new TabulaRasa_htaccess($this->slug);
 		}
 
-		require_once('widgets.php');
+		$this->widgets();
 	}
 
 	/**
@@ -73,7 +74,7 @@ class TabulaRasa {
 		add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 		add_editor_style('css/editor-style.css');
 		add_action('wp_enqueue_scripts', array(&$this, 'bulletproof_jquery'), 20);
-
+		add_filter('wp_page_menu_args', array(&$this, 'page_menu_args'));
 		$this->cleanup_header();
 	}
 
@@ -194,6 +195,14 @@ class TabulaRasa {
 				'recent_comments_style'
 						)
 		);
+	}
+
+	/**
+	 * Show home link in wp_page_menu() by default
+	 */
+	function page_menu_args($args) {
+		$args['show_home'] = true;
+		return $args;
 	}
 
 }
