@@ -30,7 +30,7 @@ class TabulaRasa {
 			require_once('htaccess.php');
 			$this->htaccess = new TabulaRasa_htaccess($this->slug);
 		}
-		
+
 		require_once('widgets.php');
 	}
 
@@ -73,7 +73,7 @@ class TabulaRasa {
 		add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 		add_editor_style('css/editor-style.css');
 		add_action('wp_enqueue_scripts', array(&$this, 'bulletproof_jquery'), 20);
-		
+
 		$this->cleanup_header();
 	}
 
@@ -96,6 +96,7 @@ class TabulaRasa {
 		add_filter('use_default_gallery_style', '__return_false');
 		add_filter('style_loader_tag', array(&$this, 'cleanup_type'));
 		add_filter('wp_title', array(&$this, 'filter_wp_title'), 10, 2);
+		add_action('widgets_init', array(&$this, 'remove_recent_comments_style'));
 	}
 
 	/**
@@ -134,7 +135,7 @@ class TabulaRasa {
 		}
 		wp_enqueue_script('jquery');
 	}
-	
+
 	/**
 	 * Filters the default output of wp_title()
 	 * 
@@ -145,33 +146,33 @@ class TabulaRasa {
 	 * @return string
 	 */
 	function filter_wp_title($title, $separator) {
-	
-	if (is_feed()) {
+
+		if (is_feed()) {
+			return $title;
+		}
+
+		global $paged, $page;
+
+		$site_name = get_bloginfo('name', 'display');
+		$site_description = get_bloginfo('description', 'display');
+
+		if (is_search()) {
+			$title = sprintf(__('Search results for %s', $this->slug), '"' . get_search_query() . '"');
+			if ($paged >= 2)
+				$title .= ' ' . $separator . ' ' . sprintf(__('Page %s', $this->slug), $paged);
+			$title .= ' ' . $separator . ' ' . $site_name;
+			return $title;
+		}
+
+		if ($site_description && (is_home())) {
+			$title .= $site_description . ' ' . $separator;
+		}
+		if ($paged >= 2 || $page >= 2) {
+			$title .= ' ' . $separator . ' ' . sprintf(__('Page %s', $this->slug), max($paged, $page));
+		}
+		$title .= ' ' . $site_name;
 		return $title;
 	}
-
-	global $paged, $page;
-	
-	$site_name = get_bloginfo('name', 'display');
-	$site_description = get_bloginfo('description', 'display');
-
-	if(is_search()) {
-		$title = sprintf( __('Search results for %s', $this->slug), '"' . get_search_query() . '"');
-		if ( $paged >= 2 )
-			$title .= ' ' . $separator . ' ' . sprintf( __('Page %s', $this->slug), $paged);
-		$title .= ' ' . $separator . ' ' . $site_name;
-		return $title;
-	}
-
-	if ($site_description && (is_home())) {
-		$title .= $site_description . ' ' . $separator;
-	}
-	if ( $paged >= 2 || $page >= 2 ) {
-		$title .= ' ' . $separator . ' ' . sprintf( __('Page %s', $this->slug ), max($paged, $page));
-	}
-	$title .= ' ' . $site_name;
-	return $title;
-}
 
 	/**
 	 * Strip the unnecessary type attribute from <style> elements
@@ -181,6 +182,18 @@ class TabulaRasa {
 	 */
 	function cleanup_type($src) {
 		return str_replace("type='text/css'", '', $src);
+	}
+
+	/**
+	 * Removes the default styles that are packaged with the Recent Comments widget.
+	 */
+	function remove_recent_comments_style() {
+		global $wp_widget_factory;
+		remove_action('wp_head', array(
+				$wp_widget_factory->widgets['WP_Widget_Recent_Comments'],
+				'recent_comments_style'
+						)
+		);
 	}
 
 }
