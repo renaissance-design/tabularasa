@@ -83,6 +83,7 @@ class TabulaRasa {
 		add_editor_style('css/editor-style.css');
 		add_action('wp_enqueue_scripts', array(&$this, 'bulletproof_jquery'), 20);
 		add_filter('wp_page_menu_args', array(&$this, 'page_menu_args'));
+		add_filter('user_contactmethods', array(&$this, 'update_contact_methods'), 10, 1);
 		$this->cleanup_header();
 		$this->cleanup_nav();
 	}
@@ -110,7 +111,7 @@ class TabulaRasa {
 		add_filter('wp_title', array(&$this, 'filter_wp_title'), 10, 2);
 		add_action('widgets_init', array(&$this, 'remove_recent_comments_style'));
 	}
-	
+
 	/**
 	 * Cleans up the default output of WP menus
 	 * 
@@ -245,6 +246,37 @@ class TabulaRasa {
 
 		$menu = str_replace(array_keys($replace), $replace, $menu);
 		return $menu;
+	}
+
+	/**
+	 * Updates the user profile with some more up to date contact methods.
+	 * 
+	 * @param array $contact_methods
+	 * @return array
+	 */
+	function update_contact_methods($contact_methods) {
+		$new_methods = array(
+				'twitter' => 'Twitter',
+				'googleplus' => 'Google+',
+				'facebook' => 'Facebook',
+				'linkedin' => 'LinkedIn',
+				'appdotnet' => 'App.net'
+		);
+		foreach($new_methods as $key => $value) {
+			if(!isset($contact_methods[$key])) {
+				$contact_methods[$key] = $value;
+			}
+		}
+		$remove_methods = array(
+				'aim',
+				'yim',
+				'jabber'
+		);
+		foreach($remove_methods as $method) {
+			unset($contact_methods[$method]);
+		}
+		
+		return $contact_methods;
 	}
 
 }
