@@ -210,6 +210,8 @@ class TabulaRasa {
 
 	/**
 	 * Removes the default styles that are packaged with the Recent Comments widget.
+	 * 
+	 * @return void
 	 */
 	function remove_recent_comments_style() {
 		global $wp_widget_factory;
