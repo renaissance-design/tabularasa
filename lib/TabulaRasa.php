@@ -84,7 +84,6 @@ class TabulaRasa {
 		add_action('wp_enqueue_scripts', array(&$this, 'bulletproof_jquery'), 20);
 		add_filter('wp_page_menu_args', array(&$this, 'page_menu_args'));
 		add_filter('user_contactmethods', array(&$this, 'update_contact_methods'), 10, 1);
-		add_filter('excerpt_length', array(&$this, 'set_excerpt_length'), 8);
 		$this->cleanup_header();
 		$this->cleanup_nav();
 	}
@@ -265,8 +264,8 @@ class TabulaRasa {
 				'linkedin' => 'LinkedIn',
 				'appdotnet' => 'App.net'
 		);
-		foreach ($new_methods as $key => $value) {
-			if (!isset($contact_methods[$key])) {
+		foreach($new_methods as $key => $value) {
+			if(!isset($contact_methods[$key])) {
 				$contact_methods[$key] = $value;
 			}
 		}
@@ -275,20 +274,11 @@ class TabulaRasa {
 				'yim',
 				'jabber'
 		);
-		foreach ($remove_methods as $method) {
+		foreach($remove_methods as $method) {
 			unset($contact_methods[$method]);
 		}
-
+		
 		return $contact_methods;
-	}
-
-	/**
-	 * Sets the post excerpt length to 40 characters.
-	 *
-	 * @return int
-	 */
-	function set_excerpt_length($length) {
-		return 40;
 	}
 
 }
