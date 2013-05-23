@@ -182,9 +182,7 @@ class TabulaRasa_options {
       function options_help() {
         $help = '<p>' . __('Some themes provide customization options that are grouped together on a Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, ' . $this->name . ', provides the following Theme Options:', $this->slug) . '</p>' .
                 '<ol>' .
-                '<li>' . __('<strong>Color Scheme</strong>: You can choose a color palette of "Light" (light background with dark text) or "Dark" (dark background with light text) for your site.', $this->slug) . '</li>' .
-                '<li>' . __('<strong>Link Color</strong>: You can choose the color used for text links on your site. You can enter the HTML color or hex code, or you can choose visually by clicking the "Select a Color" button to pick from a color wheel.', $this->slug) . '</li>' .
-                '<li>' . __('<strong>Default Layout</strong>: You can choose if you want your site&#8217;s default layout to have a sidebar on the left, the right, or not at all.', $this->slug) . '</li>' .
+                '<li>' . __('<strong>Excerpt Length</strong>: You can choose the length (in characters) of the blog excerpt for your site.', $this->slug) . '</li>' .
                 '</ol>' .
                 '<p>' . __('Remember to click "Save Changes" to save any changes you have made to the theme options.', $this->slug) . '</p>';
 
