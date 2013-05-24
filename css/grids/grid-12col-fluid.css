@@ -1,0 +1,68 @@
+/* 12 column fluid grid */
+
+/* 
+To use, simply drop the following classes into your markup. You can add 
+borders and padding without worrying about breaking the layout. 
+The first column in a row must always have the additional "first" class, which 
+takes care of clearing the previous row and removing the left margin.
+*/
+
+.container {
+	margin: 0 auto;
+	max-width: 96%;
+}
+
+.container:after {
+	clear: both;
+	content: "\200A";
+	display: block;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;}
+.grid1, .grid2, .grid3, .grid4, .grid5, .grid6, .grid7, .grid8, .grid9, .grid10, .grid11, .grid12 {
+	float: left;
+	margin-left: 3.06748466257669%;
+	box-sizing: border-box;
+}
+.grid1 {
+	width: 5.521472392638037%;
+}
+.grid2 {
+	width: 14.11042944785276%;
+}
+.grid3 {
+	width: 22.69938650306748%;
+}
+.grid4 {
+	width: 31.28834355828221%;
+}
+.grid5 {
+	width: 39.87730061349693%;
+}
+.grid6 {
+	width: 48.46625766871166%;
+}
+.grid7 {
+	width: 57.05521472392638%;
+}
+.grid8 {
+	width: 65.6441717791411%;
+}
+.grid9 {
+	width: 74.23312883435583%;
+}
+.grid10 {
+	width: 82.82208588957055%;
+}
+.grid11 {
+	width: 91.41104294478528%;
+}
+.grid12 {
+	width: 100%;
+	margin-left: 0;
+	clear: left;
+}
+.first {
+	margin-left: 0;
+	clear: left;
+}
