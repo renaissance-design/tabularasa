@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-<div class="content" role="main">
+<div class="content grid8 first" role="main">
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 				<p><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php esc_attr( printf( __( 'Return to %s', TabulaRasa::get_textdomain() ), get_the_title( $post->post_parent ) ) ); ?>" rel="gallery"><?php

@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-<div class="content" role="main">
+<div class="content grid8 first" role="main">
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 					<?php previous_post_link( '%link', '' . _x( '&larr;', 'Previous post link', TabulaRasa::get_textdomain() ) . ' %title' ); ?>

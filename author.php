@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-<div class="content" role="main">
+<div class="content grid8 first" role="main">
 <?php
 	/* Queue the first post, that way we know who
 	 * the author is when we try to get their name,

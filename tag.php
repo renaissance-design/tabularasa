@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-<div class="content" role="main">
+<div class="content grid8 first" role="main">
 				<h1><?php
 					printf( __( 'Tag Archives: %s', TabulaRasa::get_textdomain() ), '' . single_tag_title( '', false ) . '' );
 				?></h1>

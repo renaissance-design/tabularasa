@@ -14,7 +14,7 @@
  */
 
 get_header(); ?>
-<div class="content" role="main">
+<div class="content grid8 first" role="main">
 			<?php
 			/* Run the loop to output the posts.
 			 * If you want to overload this in a child theme then include a file

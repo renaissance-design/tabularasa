@@ -7,7 +7,7 @@
  * @since TabulaRasa 1.0
  */
 ?>
-<aside class="sidebar" role="complementary">
+<aside class="sidebar grid4" role="complementary">
 			<ul class="xoxo">
 
 <?php

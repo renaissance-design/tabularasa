@@ -13,7 +13,7 @@
  */
 
 get_header(); ?>
-<div class="content" role="main">
+<div class="content grid8 first" role="main">
 <?php
 	/* Queue the first post, that way we know
 	 * what date we're dealing with (if that is the case).

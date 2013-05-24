@@ -4,10 +4,10 @@
 	width: 978px;
 	margin: 0 auto;
 }
-.grid1, .grid2, .grid3, .grid4, .grid5, .grid6, .grid7, .grid8, .grid9, .grid10, .grid11 {
+.grid1, .grid2, .grid3, .grid4, .grid5, .grid6, .grid7, .grid8, .grid9, .grid10, .grid11, .grid12 {
 	float: left;
-	display: inline;
 	margin-left: 30px;
+	box-sizing: border-box;
 }
 .grid1 {
 	width: 54px;
@@ -42,56 +42,10 @@
 .grid11 {
 	width: 894px;
 }
+.grid12 {
+	width: 978px;
+}
 .first {
 	margin-left: 0;
 	clear: left;
-}
-
-/* Specific WordPress selectors */
-
-.wrapper {
-    width: 978px;
-    margin: 0 auto;
-}
-
-header, nav, footer {
-    width: 978px;
-    clear: both;
-    margin-bottom: 21px;
-}
-
-.menu {
-    overflow: hidden;
-    
-}
-
-.menu li {
-    float: left;
-    margin-right: 30px;
-}
-
-.content {
-    width: 642px;
-    float: left;
-    clear: left;
-    margin-bottom: 21px;
-}
-
-.page-template-onecolumn-page-php .content {
-    width: 978px;
-    float: none;
-}
-
-.sidebar {
-    width: 306px;
-    float: left;
-    margin: 0 0 21px 30px;
-}
-
-header, footer, nav, .content, .sidebar {
-    outline: 1px dotted #ccc;
-}
-
-.xoxo>li {
-    margin-bottom: 21px;
 }

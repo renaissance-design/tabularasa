@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-<div class="content" role="main">
+<div class="content grid8 first" role="main">
 <?php if ( have_posts() ) : ?>
 				<h1><?php printf( __( 'Search Results for: %s', TabulaRasa::get_textdomain() ), '' . get_search_query() . '' ); ?></h1>
 				<?php

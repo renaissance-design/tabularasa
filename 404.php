@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-<div class="content" role="main">
+<div class="content grid8 first" role="main">
 
 
 				<h1><?php _e( 'Not Found', TabulaRasa::get_textdomain() ); ?></h1>
