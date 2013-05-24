@@ -23,49 +23,6 @@ function TabulaRasa_setup() {
 
 add_action('init', 'TabulaRasa_setup');
 
-/**
- * Returns a "Continue Reading" link for excerpts
- *
- * @since Twenty Ten 1.0
- * @return string "Continue Reading" link
- */
-function twentyten_continue_reading_link() {
-	return ' <a href="' . get_permalink() . '">' . __('Continue reading <span class="meta-nav">&rarr;</span>', TabulaRasa::get_textdomain()) . '</a>';
-}
-
-/**
- * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and twentyten_continue_reading_link().
- *
- * To override this in a child theme, remove the filter and add your own
- * function tied to the excerpt_more filter hook.
- *
- * @since Twenty Ten 1.0
- * @return string An ellipsis
- */
-function twentyten_auto_excerpt_more($more) {
-	return ' &hellip;' . twentyten_continue_reading_link();
-}
-
-add_filter('excerpt_more', 'twentyten_auto_excerpt_more');
-
-/**
- * Adds a pretty "Continue Reading" link to custom post excerpts.
- *
- * To override this link in a child theme, remove the filter and add your own
- * function tied to the get_the_excerpt filter hook.
- *
- * @since Twenty Ten 1.0
- * @return string Excerpt with a pretty "Continue Reading" link
- */
-function twentyten_custom_excerpt_more($output) {
-	if (has_excerpt() && !is_attachment()) {
-		$output .= twentyten_continue_reading_link();
-	}
-	return $output;
-}
-
-add_filter('get_the_excerpt', 'twentyten_custom_excerpt_more');
-
 if (!function_exists('twentyten_comment')) :
 
 	/**

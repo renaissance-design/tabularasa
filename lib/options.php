@@ -64,7 +64,8 @@ class TabulaRasa_options {
     $this->general_settings = (array) get_option($this->general_settings_key);
     $this->advanced_settings = (array) get_option($this->advanced_settings_key);
     $this->general_settings = array_merge(array(
-        'excerpt_length' => '40'
+        'excerpt_length' => '40',
+				'continue_reading_link' => __('Continue Reading', $this->slug)
             ), $this->general_settings);
     /* $this->advanced_settings = array_merge(array(
         'advanced_option' => 'Advanced value'
@@ -82,13 +83,15 @@ class TabulaRasa_options {
     register_setting($this->general_settings_key, $this->general_settings_key);
     add_settings_section('section_general', __('General Theme Settings', $this->slug), array(&$this, 'section_general_desc'), $this->general_settings_key);
     add_settings_field('excerpt_length', __('Excerpt Length', $this->slug), array(&$this, 'excerpt_length'), $this->general_settings_key, 'section_general');
+		add_settings_field('continue_reading_link', __('Continue Reading', $this->slug), array(&$this, 'continue_reading_link'), $this->general_settings_key, 'section_general');
   }
 
   /**
    * Description for the general settings tab
    */
   function section_general_desc() {
-    _e('Some general theme settings.', $this->slug);
+    ?><p><?php _e('Some general theme settings.', $this->slug); ?></p><?php
+
   }
 
   /**
@@ -96,10 +99,18 @@ class TabulaRasa_options {
    */
   function excerpt_length() {
     ?>
-    <input type="text" name="<?php echo $this->general_settings_key; ?>[excerpt_length]" value="<?php echo esc_attr($this->general_settings['excerpt_length']); ?>" />
+    <input id="<?php echo $this->general_settings_key; ?>[excerpt_length]" class="regular-text" type="text" name="<?php echo $this->general_settings_key; ?>[excerpt_length]" value="<?php echo esc_attr($this->general_settings['excerpt_length']); ?>" />
     <?php
   }
 
+	  /**
+   * Input for excerpt length
+   */
+  function continue_reading_link() {
+    ?>
+    <input id="<?php echo $this->general_settings_key; ?>[continue_reading_link]" class="regular-text" type="text" name="<?php echo $this->general_settings_key; ?>[continue_reading_link]" value="<?php echo esc_attr($this->general_settings['continue_reading_link']); ?>" />
+    <?php
+  }
   /**
    * Register the settings for the advanced tab
    */
@@ -128,7 +139,7 @@ class TabulaRasa_options {
   }
 
   /**
-   * Adds a manu entry for the theme options page
+   * Adds a menu entry for the theme options page
    * 
    * @return void
    */
@@ -183,6 +194,7 @@ class TabulaRasa_options {
         $help = '<p>' . __('Some themes provide customization options that are grouped together on a Theme Options screen. If you change themes, options may change or disappear, as they are theme-specific. Your current theme, ' . $this->name . ', provides the following Theme Options:', $this->slug) . '</p>' .
                 '<ol>' .
                 '<li>' . __('<strong>Excerpt Length</strong>: You can choose the length (in characters) of the blog excerpt for your site.', $this->slug) . '</li>' .
+								'<li>' . __('<strong>Continue Reading Link</strong>: You can choose the text that will be displayed in the Continue Reading link in blog excerpts.', $this->slug) . '</li>' .
                 '</ol>' .
                 '<p>' . __('Remember to click "Save Changes" to save any changes you have made to the theme options.', $this->slug) . '</p>';
 
