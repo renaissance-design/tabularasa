@@ -8,7 +8,7 @@
  */
 
 get_header(); ?>
-<div class="content grid8" role="main">
+<div class="content grid8 first" role="main">
 				<h1><?php
 					printf( __( 'Category Archives: %s', TabulaRasa::get_textdomain() ), '' . single_cat_title( '', false ) . '' );
 				?></h1>
