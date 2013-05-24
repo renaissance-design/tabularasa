@@ -77,7 +77,7 @@ class TabulaRasa {
 		if (is_admin()) {
 			
 		} else {
-			
+			$this->dev_tools();
 		}
 	}
 
@@ -334,6 +334,47 @@ class TabulaRasa {
 		}
 
 		return $contact_methods;
+	}
+
+	function dev_tools() {
+		if (current_user_can('manage_options') && WP_DEBUG === true) {
+			add_action('wp_footer', array(&$this, 'dev_grid_overlay'), 100);
+			wp_register_style('tabularasa-dev', get_stylesheet_directory_uri() . '/css/dev.css');
+			wp_enqueue_style('tabularasa-dev');
+		}
+	}
+
+	function dev_grid_overlay() {
+		?>
+		<div class="dev-overlay">
+			<div class="container">
+				<div class="grid1 first">
+				</div>
+				<div class="grid1">
+				</div>
+				<div class="grid1">
+				</div>
+				<div class="grid1">
+				</div>
+				<div class="grid1">
+				</div>
+				<div class="grid1">
+				</div>
+				<div class="grid1">
+				</div>
+				<div class="grid1">
+				</div>
+				<div class="grid1">
+				</div>
+				<div class="grid1">
+				</div>
+				<div class="grid1">
+				</div>
+				<div class="grid1">
+				</div>
+			</div>
+		</div>
+		<?php
 	}
 
 }
