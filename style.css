@@ -54,3 +54,7 @@ header, nav, footer, .content, .sidebar, .xoxo>li {
 .access {
     display: none;
 }
+
+img {
+	max-width: 100%;
+}
