@@ -1,1 +1,6 @@
 /* IE (all versions) */
+
+/* Micro clearfix for IE6/7 */
+.container {
+    *zoom: 1;
+}

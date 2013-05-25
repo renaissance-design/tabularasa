@@ -12,13 +12,14 @@ takes care of clearing the previous row and removing the left margin.
 	max-width: 70em;
 }
 
+.container:before,
 .container:after {
-	clear: both;
-	content: "\200A";
-	display: block;
-	height: 0;
-	line-height: 0;
-	visibility: hidden;
+    content: " ";
+    display: table;
+}
+
+.container:after {
+    clear: both;
 }
 
 .grid1, .grid2, .grid3, .grid4, .grid5, .grid6, .grid7, .grid8, .grid9, .grid10, .grid11, .grid12 {
