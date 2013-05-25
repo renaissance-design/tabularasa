@@ -97,6 +97,7 @@ class TabulaRasa {
 		add_filter('excerpt_length', array(&$this, 'get_excerpt_length'));
 		add_filter('excerpt_more', array(&$this, 'auto_excerpt_more'));
 		add_filter('get_the_excerpt', array(&$this, 'custom_excerpt_more'));
+		add_action('admin_bar_menu', array(&$this, 'dev_toolbar_items'), 100);
 	}
 
 	/**
@@ -336,6 +337,30 @@ class TabulaRasa {
 		return $contact_methods;
 	}
 
+	function dev_toolbar_items($admin_bar) {
+		if (current_user_can('manage_options') && WP_DEBUG === true) {
+			$admin_bar->add_menu(array(
+					'id' => 'tr-dev-tools',
+					'title' => 'TabulaRasa Dev Tools',
+					'href' => '#',
+					'meta' => array(
+							'title' => __('Dev Tools'),
+					),
+			));
+			if (!is_admin()) {
+				$admin_bar->add_menu(array(
+						'id' => 'tr-grid-overlay',
+						'parent' => 'tr-dev-tools',
+						'title' => 'Grid Overlay',
+						'href' => '#',
+						'meta' => array(
+								'title' => __('Show the grid overlay'),
+						),
+				));
+			}
+		}
+	}
+
 	function dev_tools() {
 		if (current_user_can('manage_options') && WP_DEBUG === true) {
 			add_action('wp_footer', array(&$this, 'dev_grid_overlay'), 100);
@@ -374,6 +399,13 @@ class TabulaRasa {
 				</div>
 			</div>
 		</div>
+		<script>
+			jQuery(document).ready(function() {
+				jQuery('#wp-admin-bar-tr-grid-overlay a').click(function() {
+					jQuery('.dev-overlay').toggle();
+				});
+			});	
+		</script>
 		<?php
 	}
 
