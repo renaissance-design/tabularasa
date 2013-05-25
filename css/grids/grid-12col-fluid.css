@@ -18,12 +18,15 @@ takes care of clearing the previous row and removing the left margin.
 	display: block;
 	height: 0;
 	line-height: 0;
-	visibility: hidden;}
+	visibility: hidden;
+}
+
 .grid1, .grid2, .grid3, .grid4, .grid5, .grid6, .grid7, .grid8, .grid9, .grid10, .grid11, .grid12 {
 	float: left;
 	margin-left: 3.06748466257669%;
 	box-sizing: border-box;
 }
+
 .grid1 {
 	width: 5.521472392638037%;
 }
@@ -65,4 +68,77 @@ takes care of clearing the previous row and removing the left margin.
 .first {
 	margin-left: 0;
 	clear: left;
+}
+
+.push1, .push2, .push3, .push4, .push5, .push6, .push7, .push8, .push9, .push10, .push11,
+.pull1, .pull2, .pull3, .pull4, .pull5, .pull6, .pull7, .pull8, .pull9, .pull10, .pull11 {
+	position: relative;
+}
+
+.push1 {
+	left: 8.588957055214727%;
+}
+.push2 {
+	left: 17.17791411042945%;
+}
+.push3 {
+	left: 25.76687116564418%;
+}
+.push4 {
+	left: 34.35582822085891%;
+}
+.push5 {
+	left: 42.94478527607364%;
+}
+.push6 {
+	left: 51.53374233128836%;
+}
+.push7 {
+	left: 60.12269938650309%;
+}
+.push8 {
+	left: 68.71165644171782%;
+}
+.push9 {
+	left: 77.30061349693254%;
+}
+.push10 {
+	left: 85.88957055214727%;
+}
+.push11 {
+	left: 94.478527607362%;
+}
+
+.pull1 {
+	left: -8.588957055214727%;
+}
+.pull2 {
+	left: -17.17791411042945%;
+}
+.pull3 {
+	left: -25.76687116564418%;
+}
+.pull4 {
+	left: -34.35582822085891%;
+}
+.pull5 {
+	left: -42.94478527607364%;
+}
+.pull6 {
+	left: -51.53374233128836%;
+}
+.pull7 {
+	left: -60.12269938650309%;
+}
+.pull8 {
+	left: -68.71165644171782%;
+}
+.pull9 {
+	left: -77.30061349693254%;
+}
+.pull10 {
+	left: -85.88957055214727%;
+}
+.pull11 {
+	left: -94.478527607362%;
 }
