@@ -337,6 +337,12 @@ class TabulaRasa {
 		return $contact_methods;
 	}
 
+	/**
+	 * Adds the dev menu to the toolbar
+	 * 
+	 * @since TabulaRasa 1.11
+	 * @param object $admin_bar
+	 */
 	function dev_toolbar_items($admin_bar) {
 		if (current_user_can('manage_options') && WP_DEBUG === true) {
 			$admin_bar->add_menu(array(
@@ -361,6 +367,11 @@ class TabulaRasa {
 		}
 	}
 
+	/**
+	 * Loads the dev tools
+	 * 
+	 * @since TabulaRasa 1.11
+	 */
 	function dev_tools() {
 		if (current_user_can('manage_options') && WP_DEBUG === true) {
 			add_action('wp_footer', array(&$this, 'dev_grid_overlay'), 100);
@@ -369,6 +380,11 @@ class TabulaRasa {
 		}
 	}
 
+	/**
+	 * Adds a grid overlay to the frontend to aid development
+	 * 
+	 * @since TabulaRasa 1.11
+	 */
 	function dev_grid_overlay() {
 		?>
 		<div class="dev-overlay">
