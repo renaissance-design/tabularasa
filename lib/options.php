@@ -83,7 +83,7 @@ class TabulaRasa_options {
     register_setting($this->general_settings_key, $this->general_settings_key);
     add_settings_section('section_general', __('General Theme Settings', $this->slug), array(&$this, 'section_general_desc'), $this->general_settings_key);
     add_settings_field('excerpt_length', __('Excerpt Length', $this->slug), array(&$this, 'excerpt_length'), $this->general_settings_key, 'section_general');
-		add_settings_field('continue_reading_link', __('Continue Reading', $this->slug), array(&$this, 'continue_reading_link'), $this->general_settings_key, 'section_general');
+		add_settings_field('continue_reading_link', __('Continue Reading Link', $this->slug), array(&$this, 'continue_reading_link'), $this->general_settings_key, 'section_general');
   }
 
   /**
