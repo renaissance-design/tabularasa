@@ -70,6 +70,32 @@ class TabulaRasa {
 	}
 
 	/**
+	 * Echo pagination. If used with a custom query, it needs to be passed as an argument. Otherwise it assumes the default $wp_query
+	 * 
+	 * @param object $query An instance of WP_Query
+	 */
+	public static function paginate($query = '') {
+		if(!($query instanceof WP_Query)) {
+			global $wp_query;
+			$query = $wp_query;
+		}	
+		if ($query->max_num_pages > 1) {
+			$current_page = max(1, get_query_var('paged'));
+			echo '<nav class="pagination">';
+			echo paginate_links(array(
+					'base' => get_pagenum_link(1) . '%_%',
+					'format' => __('page', self::$instance->get_textdomain()) . '/%#%',
+					'current' => $current_page,
+					'total' => $query->max_num_pages,
+					'prev_text' => __('Prev', self::$instance->get_textdomain()),
+					'next_text' => __('Next', self::$instance->get_textdomain()),
+					'type' => 'list'
+			));
+			echo '</nav>';
+		}
+	}
+
+	/**
 	 * Hooks to WP init()
 	 */
 	function init() {
