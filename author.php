@@ -26,13 +26,17 @@ get_header(); ?>
 	<h2><?php printf( __( 'About %s', TabulaRasa::get_textdomain() ), get_the_author() ); ?></h2>
 	
     <ul class="author_info">
-    <?php if (get_the_author_meta('user_url')  ) { ?>
-        <li><span class="author_info_field_title">Website:</span> <a href="<?php the_author_meta('url'); ?>" rel="me"><?php the_author_meta('url'); ?></a></li>
-        <?php } if (get_the_author_meta('twitter')  ) { ?>
-        <li><span class="author_info_field_title">Twitter:</span> <a href="<?php the_author_meta('twitter'); ?>"><?php the_author_meta('twitter'); ?></a></li>
-        <?php } if (get_the_author_meta('description')  ) { ?>
-        <li><span class="author_info_field_title">Profile:</span> <?php the_author_meta('description'); ?></li>
-        <?php } ?>
+    <?php if (get_the_author_meta('user_url')) : ?>
+      <li><span class="author_info_field_title"><?php _e('Website', TabulaRasa::get_textdomain()); ?>:</span> <a href="<?php the_author_meta('url'); ?>" rel="me"><?php the_author_meta('url'); ?></a></li>
+        <?php 
+        endif; 
+        if (get_the_author_meta('twitter')) : ?>
+      <li><span class="author_info_field_title"><?php _e('Twitter', TabulaRasa::get_textdomain());?>:</span> <a href="<?php the_author_meta('twitter'); ?>"><?php the_author_meta('twitter'); ?></a></li>
+        <?php 
+        endif; 
+        if (get_the_author_meta('description')) : ?>
+      <li><span class="author_info_field_title"><?php _e('Profile', TabulaRasa::get_textdomain()); ?>:</span> <?php the_author_meta('description'); ?></li>
+        <?php endif; ?>
     </ul>
 
 
