@@ -417,7 +417,7 @@ class TabulaRasa {
   /**
    * Stores the current template for later retrieval
    * 
-   * @author Mike Bishop mike@miniman-webdesign.co.uk
+   * @author Mike Bishop <mike@miniman-webdesign.co.uk>
    * 
    * @param string $template
    * @return string
