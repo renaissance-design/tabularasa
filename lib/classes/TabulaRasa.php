@@ -405,6 +405,9 @@ class TabulaRasa {
                     'parent' => 'tr-dev-tools',
                     'title' => __('Template') . ': ' . $this->dev['current_template'],
                     'href' => admin_url('theme-editor.php?file=' . $this->dev['current_template'] . '&amp;theme=' . $this->theme->name),
+                    'meta' => array(
+                        'title' => __('Edit this template'),
+                    )
                 )
         );
       }
