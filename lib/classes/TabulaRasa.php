@@ -478,7 +478,7 @@ class TabulaRasa {
     </div>
     <script>
       jQuery(document).ready(function() {
-        jQuery('#wp-admin-bar-tr-grid-overlay a').click(function() {
+        jQuery('#wp-admin-bar-tr-dev-grid-overlay a').click(function() {
           jQuery('.dev-overlay').toggle();
         });
       });
