@@ -9,7 +9,7 @@
 /**
  * Initial theme setup. Custom functions must be added below this point.
  */
-require_once(locate_template('/lib/TabulaRasa.php'));
+require_once(locate_template('/lib/classes/TabulaRasa.php'));
 $TabulaRasa = TabulaRasa::get_instance();
 
 function TabulaRasa_setup() {
