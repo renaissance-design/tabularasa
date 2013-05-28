@@ -417,11 +417,11 @@ class TabulaRasa {
   /**
    * Stores the current template for later retrieval
    * 
-   * Based on code submitted by Mike Bishop
+   * @author Mike Bishop mike@miniman-webdesign.co.uk
    * 
    * @param string $template
    * @return string
-   * 
+   * @since TabulaRasa 1.12
    */
   function dev_template_id($template) {
     $this->dev['current_template'] = basename($template);
