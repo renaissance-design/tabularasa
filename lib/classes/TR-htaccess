@@ -1,0 +1,199 @@
+# BEGIN Tabula Rasa 
+
+# ----------------------------------------------------------------------
+# 5G Firewall (2013) from PerishablePress.com
+# ----------------------------------------------------------------------
+
+# 5G:[QUERY STRINGS]
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	RewriteCond %{QUERY_STRING} (\"|%22).*(<|>|%3) [NC,OR]
+	RewriteCond %{QUERY_STRING} (javascript:).*(\;) [NC,OR]
+	RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3) [NC,OR]
+	RewriteCond %{QUERY_STRING} (\\|\.\./|`|=\'$|=%27$) [NC,OR]
+	RewriteCond %{QUERY_STRING} (\;|\'|\"|%22).*(union|select|insert|drop|update|md5|benchmark|or|and|if) [NC,OR]
+	RewriteCond %{QUERY_STRING} (base64_encode|localhost|mosconfig) [NC,OR]
+	RewriteCond %{QUERY_STRING} (boot\.ini|echo.*kae|etc/passwd) [NC,OR]
+	RewriteCond %{QUERY_STRING} (GLOBALS|REQUEST)(=|\[|%) [NC]
+	RewriteRule .* - [F]
+</IfModule>
+
+# 5G:[USER AGENTS]
+<IfModule mod_setenvif.c>
+	# SetEnvIfNoCase User-Agent ^$ keep_out
+	SetEnvIfNoCase User-Agent (binlar|casper|cmsworldmap|comodo|diavol|dotbot|feedfinder|flicky|ia_archiver|jakarta|kmccrew|nutch|planetwork|purebot|pycurl|skygrid|sucker|turnit|vikspider|zmeu) keep_out
+	<limit GET POST PUT>
+		Order Allow,Deny
+		Allow from all
+		Deny from env=keep_out
+	</limit>
+</IfModule>
+
+# 5G:[REQUEST STRINGS]
+<IfModule mod_alias.c>
+	RedirectMatch 403 (https?|ftp|php)\://
+	RedirectMatch 403 /(https?|ima|ucp)/
+	RedirectMatch 403 /(Permanent|Better)$
+	RedirectMatch 403 (\=\\\'|\=\\%27|/\\\'/?|\)\.css\()$
+	RedirectMatch 403 (\,|\)\+|/\,/|\{0\}|\(/\(|\.\.\.|\+\+\+|\||\\\"\\\")
+	RedirectMatch 403 \.(cgi|asp|aspx|cfg|dll|exe|jsp|mdb|sql|ini|rar)$
+	RedirectMatch 403 /(contac|fpw|install|pingserver|register)\.php$
+	RedirectMatch 403 (base64|crossdomain|localhost|wwwroot|e107\_)
+	RedirectMatch 403 (eval\(|\_vti\_|\(null\)|echo.*kae|config\.xml)
+	RedirectMatch 403 \.well\-known/host\-meta
+	RedirectMatch 403 /function\.array\-rand
+	RedirectMatch 403 \)\;\$\(this\)\.html\(
+	RedirectMatch 403 proc/self/environ
+	RedirectMatch 403 msnbot\.htm\)\.\_
+	RedirectMatch 403 /ref\.outcontrol
+	RedirectMatch 403 com\_cropimage
+	RedirectMatch 403 indonesia\.htm
+	RedirectMatch 403 \{\$itemURL\}
+	RedirectMatch 403 function\(\)
+	RedirectMatch 403 labels\.rdf
+	RedirectMatch 403 /playing.php
+	RedirectMatch 403 muieblackcat
+</IfModule>
+
+# 5G:[REQUEST METHOD]
+<ifModule mod_rewrite.c>
+	RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+	RewriteRule .* - [F]
+</IfModule>
+
+# 5G:[BAD IPS]
+<limit GET POST PUT>
+	Order Allow,Deny
+	Allow from all
+	# uncomment/edit/repeat next line to block IPs
+	# Deny from 123.456.789
+</limit>
+
+# 5G:[WordPress]
+<ifModule mod_rewrite.c>
+ RedirectMatch 403 /\$\&
+ RedirectMatch 403 (?i)/\&(t|title)=
+ RedirectMatch 403 (?i)/\.(bash|git|hg|log|svn|swp|tar)
+ RedirectMatch 403 (?i)/(1|contact|i|index1|iprober|phpinfo|phpspy|product|signup|t|test|timthumb|tz|visit|webshell|wp-signup).php
+ RedirectMatch 403 (?i)/(author-panel|class|database|manage|phpMyAdmin|register|submit-articles|system|usage|webmaster)/?$
+ RedirectMatch 403 (?i)/(=|_mm|cgi|cvs|dbscripts|jsp|rnd|shadow|userfiles)
+</ifModule>
+
+
+
+# ----------------------------------------------------------------------
+# Webfont access
+# ----------------------------------------------------------------------
+
+# Allow access from all domains for webfonts.
+# Alternatively you could only whitelist your
+# subdomains like "subdomain.example.com".
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ttf|ttc|otf|eot|woff|font.css)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+
+# ----------------------------------------------------------------------
+# Proper MIME type for all files
+# ----------------------------------------------------------------------
+
+# JavaScript
+#   Normalize to standard type (it's sniffed in IE anyways)
+#   tools.ietf.org/html/rfc4329#section-7.2
+AddType application/javascript         js jsonp
+AddType application/json               json
+
+# Audio
+AddType audio/ogg                      oga ogg
+AddType audio/mp4                      m4a f4a f4b
+
+# Video
+AddType video/ogg                      ogv
+AddType video/mp4                      mp4 m4v f4v f4p
+AddType video/webm                     webm
+AddType video/x-flv                    flv
+
+# SVG
+#   Required for svg webfonts on iPad
+#   twitter.com/FontSquirrel/status/14855840545
+AddType     image/svg+xml              svg svgz
+AddEncoding gzip                       svgz
+
+# Webfonts
+AddType application/vnd.ms-fontobject  eot
+AddType application/x-font-ttf         ttf ttc
+AddType font/opentype                  otf
+AddType application/x-font-woff        woff
+
+# Assorted types
+AddType image/x-icon                        ico
+AddType image/webp                          webp
+AddType text/cache-manifest                 appcache manifest
+AddType text/x-component                    htc
+AddType application/xml                     rss atom xml rdf
+AddType application/x-chrome-extension      crx
+AddType application/x-opera-extension       oex
+AddType application/x-xpinstall             xpi
+AddType application/octet-stream            safariextz
+AddType application/x-web-app-manifest+json webapp
+AddType text/x-vcard                        vcf
+AddType application/x-shockwave-flash       swf
+AddType text/vtt                            vtt
+
+# ----------------------------------------------------------------------
+# Prevent mobile network providers from modifying your site
+# ----------------------------------------------------------------------
+
+# The following header prevents modification of your code over 3G on some
+# European providers.
+# This is the official 'bypass' suggested by O2 in the UK.
+
+<IfModule mod_headers.c>
+Header set Cache-Control "no-transform"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# UTF-8 encoding
+# ----------------------------------------------------------------------
+
+# Use UTF-8 encoding for anything served text/plain or text/html
+AddDefaultCharset utf-8
+
+# Force UTF-8 for a number of file formats
+AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
+
+# ----------------------------------------------------------------------
+# A little more security
+# ----------------------------------------------------------------------
+
+# "-Indexes" will have Apache block users from browsing folders without a
+# default document Usually you should leave this activated, because you
+# shouldn't allow everybody to surf through every folder on your server (which
+# includes rather private places like CMS system folders).
+<IfModule mod_autoindex.c>
+  Options -Indexes
+</IfModule>
+
+# Block access to "hidden" directories or files whose names begin with a
+# period. This includes directories used by version control systems such as
+# Subversion or Git.
+<IfModule mod_rewrite.c>
+  RewriteCond %{SCRIPT_FILENAME} -d [OR]
+  RewriteCond %{SCRIPT_FILENAME} -f
+  RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+# Block access to backup and source files. These files may be left by some
+# text/html editors and pose a great security danger, when anyone can access
+# them.
+<FilesMatch "(\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
+  Order allow,deny
+  Deny from all
+  Satisfy All
+</FilesMatch>
+
+# END Tabula Rasa
