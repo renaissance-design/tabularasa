@@ -48,6 +48,8 @@ class TabulaRasa {
     }
 
     add_action('widgets_init', array(&$this, 'register_widgets'));
+    
+    
   }
 
   /**
@@ -110,6 +112,24 @@ class TabulaRasa {
       $this->dev_tools();
     }
   }
+  
+  /**
+   * Activation hook
+   * 
+   * @since TabulaRasa 1.12
+   */
+  function activate() {
+    
+  }
+  
+  /**
+   * Deactivation hook
+   * 
+   * @since TabulaRasa 1.12
+   */
+  function deactivate() {
+    
+  }
 
   /**
    * Sets theme defaults
@@ -129,6 +149,8 @@ class TabulaRasa {
     add_filter('get_the_excerpt', array(&$this, 'custom_excerpt_more'));
     add_action('admin_bar_menu', array(&$this, 'dev_toolbar_items'), 100);
     add_filter('template_include', array(&$this, 'dev_template_id'), 1000);
+    add_action('after_switch_theme', array(&$this, 'activate'), 10, 2);
+    add_action('switch_theme', array(&$this, 'deactivate'), 10, 2);
   }
 
   /**
