@@ -248,9 +248,11 @@ class TabulaRasa {
    */
   function bulletproof_jquery() {
     global $wp_scripts;
-
+		$jquery_version = '';
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? 'https' : 'http';
-    $jquery_version = $wp_scripts->registered['jquery']->ver;
+		if(isset($wp_scripts)) {
+			$jquery_version = $wp_scripts->registered['jquery']->ver;
+		}
     $url = $protocol . '://ajax.googleapis.com/ajax/libs/jquery/' . $jquery_version . '/jquery.min.js';
     wp_deregister_script('jquery');
     if (get_transient('google_jquery') == true) {
