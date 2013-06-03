@@ -1,0 +1,744 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Tabula Rasa\n"
+"POT-Creation-Date: 2013-06-03 10:30-0000\n"
+"PO-Revision-Date: 2013-06-03 10:31-0000\n"
+"Last-Translator: Chris Cox <chris@renaissance-design.net>\n"
+"Language-Team: \n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n;_x\n"
+"X-Poedit-Basepath: C:\\Users\\Chris\\Dropbox\\Web Projects\\TabulaRasa\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: C:\\Users\\Chris\\Dropbox\\Web Projects\\TabulaRasa\n"
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/404.php:14
+#: Projects\TabulaRasa/loop.php:29
+msgid "Not Found"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/404.php:15
+msgid ""
+"Apologies, but the page you requested could not be found. Perhaps searching "
+"will help."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/archive.php:30
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/archive.php:32
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/archive.php:34
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/archive.php:36
+msgid "Blog Archives"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/attachment.php:14
+#, php-format
+msgid "Return to %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/attachment.php:16
+#, php-format
+msgid "<span>&larr;</span> %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/attachment.php:22
+#, php-format
+msgid "By %2$s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/attachment.php:33
+#, php-format
+msgid "Published %2$s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/attachment.php:43
+#, php-format
+msgid "Full size is %s pixels"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/attachment.php:46
+msgid "Link to full-size image"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/attachment.php:53
+#: Projects\TabulaRasa/attachment.php:92 Projects\TabulaRasa/loop.php:79
+#: Projects\TabulaRasa/loop.php:94 Projects\TabulaRasa/loop.php:121
+#: Projects\TabulaRasa/onecolumn-page.php:22 Projects\TabulaRasa/page.php:27
+#: Projects\TabulaRasa/single.php:34
+msgid "Edit"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/attachment.php:88
+#: Projects\TabulaRasa/loop.php:88 Projects\TabulaRasa/loop.php:105
+msgid "Continue reading &rarr;"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/attachment.php:89
+#: Projects\TabulaRasa/loop.php:106 Projects\TabulaRasa/onecolumn-page.php:21
+#: Projects\TabulaRasa/page.php:26 Projects\TabulaRasa/single.php:22
+msgid "Pages:"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/author.php:24
+#, php-format
+msgid "Author Archives: %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/author.php:26
+#, php-format
+msgid "About %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/author.php:30
+msgid "Website"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/author.php:34
+msgid "Twitter"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/author.php:38
+msgid "Profile"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/category.php:13
+#, php-format
+msgid "Category Archives: %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/comments.php:17
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/comments.php:33
+#, php-format
+msgid "One Response to %2$s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/comments.php:38
+#: Projects\TabulaRasa/comments.php:55
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/comments.php:39
+#: Projects\TabulaRasa/comments.php:56
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/comments.php:66
+msgid "Comments are closed."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:17
+msgid "Primary Navigation"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:18
+msgid "Secondary Navigation"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:47
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:50
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:57
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:58
+#: Projects\TabulaRasa/functions.php:75
+msgid "(Edit)"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:75
+msgid "Pingback:"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:95
+msgid "Primary Widget Area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:97
+msgid "The primary widget area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:106
+msgid "Secondary Widget Area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:108
+msgid "The secondary widget area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:117
+msgid "First Footer Widget Area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:119
+msgid "The first footer widget area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:128
+msgid "Second Footer Widget Area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:130
+msgid "The second footer widget area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:139
+msgid "Third Footer Widget Area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:141
+msgid "The third footer widget area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:150
+msgid "Fourth Footer Widget Area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:152
+msgid "The fourth footer widget area"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:171
+#, php-format
+msgid ""
+"<span class=\"%1$s\">Posted on</span> %2$s <span class=\"meta-sep\">by</"
+"span> %3$s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:190
+#, php-format
+msgid ""
+"This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" "
+"title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:192
+#, php-format
+msgid ""
+"This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title="
+"\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/functions.php:194
+#, php-format
+msgid ""
+"Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark"
+"\">permalink</a>."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/header.php:47
+msgid "Skip to content"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/loop.php:30
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/loop.php:53
+#: Projects\TabulaRasa/loop.php:76
+msgid "gallery"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/loop.php:69
+#, php-format
+msgid "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/loop.php:76
+msgid "More Galleries"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/loop.php:78
+#: Projects\TabulaRasa/loop.php:93 Projects\TabulaRasa/loop.php:120
+msgid "Leave a comment"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/loop.php:78
+#: Projects\TabulaRasa/loop.php:93 Projects\TabulaRasa/loop.php:120
+msgid "1 Comment"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/loop.php:78
+#: Projects\TabulaRasa/loop.php:93 Projects\TabulaRasa/loop.php:120
+msgid "% Comments"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/loop.php:83
+msgid "asides"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/loop.php:110
+#, php-format
+msgid "Posted in %2$s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/loop.php:117
+#, php-format
+msgid "Tagged %2$s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/search.php:13
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/search.php:22
+msgid "Nothing Found"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/search.php:23
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/sidebar.php:26
+msgid "Archives"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/sidebar.php:33
+msgid "Meta"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/single.php:14
+#: Projects\TabulaRasa/single.php:36
+msgid "&larr;"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/single.php:15
+#: Projects\TabulaRasa/single.php:37
+msgid "&rarr;"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/single.php:29
+#, php-format
+msgid "View all posts by %s &rarr;"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/tag.php:13
+#, php-format
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/htaccess.php:39
+#, php-format
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:68
+msgid "Continue Reading"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:81
+msgid "General"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:84
+msgid "General Theme Settings"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:85
+msgid "Excerpt Length"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:86
+msgid "Continue Reading Link"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:93
+msgid "Some general theme settings."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:118
+msgid "Advanced"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:148
+msgid "Theme Options"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:194
+msgid ""
+"Some themes provide customization options that are grouped together on a "
+"Theme Options screen. If you change themes, options may change or disappear, "
+"as they are theme-specific. Your current theme, "
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:196
+msgid ""
+"<strong>Excerpt Length</strong>: You can choose the length (in characters) "
+"of the blog excerpt for your site."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:197
+msgid ""
+"<strong>Continue Reading Link</strong>: You can choose the text that will be "
+"displayed in the Continue Reading link in blog excerpts."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:199
+msgid ""
+"Remember to click \"Save Changes\" to save any changes you have made to the "
+"theme options."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:201
+msgid "For more information:"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:202
+msgid ""
+"<a href=\"http://codex.wordpress.org/Appearance_Theme_Options_Screen\" "
+"target=\"_blank\">Documentation on Theme Options</a>"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:203
+msgid ""
+"<a href=\"http://wordpress.org/support/\" target=\"_blank\">Support Forums</"
+"a>"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/options.php:210
+msgid "Overview"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:164
+#: Projects\TabulaRasa/lib/classes/plugins.php:86
+msgid "Install Required Plugins"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:165
+#: Projects\TabulaRasa/lib/classes/plugins.php:87
+msgid "Install Plugins"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:166
+#: Projects\TabulaRasa/lib/classes/plugins.php:88
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:167
+msgid "Something went wrong."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:178
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:490
+#: Projects\TabulaRasa/lib/classes/plugins.php:100
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:179
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1846
+#: Projects\TabulaRasa/lib/classes/plugins.php:101
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:180
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:517
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:2058
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:545
+#, php-format
+msgid "The following plugin was activated successfully: %s."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:704
+msgid "Dismiss this notice"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1091
+msgid "External Link"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1096
+msgid "Private Repository"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1099
+msgid "Pre-Packaged"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1103
+msgid "WordPress Repository"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1106
+msgid "Required"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1106
+msgid "Recommended"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1109
+msgid "Not Installed"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1111
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1281
+#, php-format
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1297
+msgid "Plugin"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1298
+msgid "Source"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1299
+msgid "Type"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1300
+msgid "Status"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1318
+msgid "Install"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1319
+msgid "Activate"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1544
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1829
+msgid "Install package not available."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1830
+#, php-format
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1831
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1832
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1833
+msgid "Plugin install failed."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1834
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1845
+msgid "Plugin activation failed."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1955
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1956
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1956
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1965
+msgid "Show Details"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1956
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1965
+msgid "Hide Details"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1957
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1958
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1962
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1963
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1964
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1965
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1966
+msgid "All installations have been completed."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/plugin-activation.php:1967
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/plugins.php:89
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web Projects\TabulaRasa/lib/classes/plugins.php:102
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/TabulaRasa.php:92
+msgid "page"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/TabulaRasa.php:95
+msgid "Prev"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/TabulaRasa.php:96
+msgid "Next"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/TabulaRasa.php:297
+#, php-format
+msgid "Search results for %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/TabulaRasa.php:299
+#: Projects\TabulaRasa/lib/classes/TabulaRasa.php:308
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/TabulaRasa.php:410
+msgid "Dev Tools"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/TabulaRasa.php:419
+msgid "Grid Overlay"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/TabulaRasa.php:422
+msgid "Show the grid overlay"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/TabulaRasa.php:430
+msgid "Template"
+msgstr ""
+
+#: C:\Users\Chris\Dropbox\Web
+#: Projects\TabulaRasa/lib/classes/TabulaRasa.php:433
+msgid "Edit this template"
+msgstr ""
