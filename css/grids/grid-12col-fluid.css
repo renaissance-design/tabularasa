@@ -25,6 +25,8 @@ takes care of clearing the previous row and removing the left margin.
 .grid1, .grid2, .grid3, .grid4, .grid5, .grid6, .grid7, .grid8, .grid9, .grid10, .grid11, .grid12 {
 	float: left;
 	margin-left: 3.06748466257669%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
