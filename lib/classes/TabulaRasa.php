@@ -28,7 +28,7 @@ class TabulaRasa {
     $this->slug = sanitize_title_with_dashes($this->theme->name);
 
     $this->settings = get_option('TabulaRasa_general_settings');
-    
+
     $this->dev = array();
 
     add_action('init', array(&$this, 'init'));
@@ -37,7 +37,7 @@ class TabulaRasa {
 
     if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_SOFTWARE'], 'litespeed') !== false) {
       require_once(locate_template('/lib/classes/htaccess.php'));
-      $this->htaccess = new TabulaRasa_htaccess($this->slug);
+      // $this->htaccess = new TabulaRasa_htaccess($this->slug);
     }
 
     require_once(locate_template('/lib/classes/options.php'));
@@ -48,8 +48,6 @@ class TabulaRasa {
     }
 
     add_action('widgets_init', array(&$this, 'register_widgets'));
-    
-    
   }
 
   /**
@@ -112,7 +110,7 @@ class TabulaRasa {
       $this->dev_tools();
     }
   }
-  
+
   /**
    * Activation hook
    * 
@@ -121,7 +119,7 @@ class TabulaRasa {
   function activate() {
     
   }
-  
+
   /**
    * Deactivation hook
    * 
@@ -151,6 +149,8 @@ class TabulaRasa {
     add_filter('template_include', array(&$this, 'dev_template_id'), 1000);
     add_action('after_switch_theme', array(&$this, 'activate'), 10, 2);
     add_action('switch_theme', array(&$this, 'deactivate'), 10, 2);
+    add_filter('post_thumbnail_html', array(&$this, 'remove_image_dimensions'), 10);
+    add_filter('image_send_to_editor', array(&$this, 'remove_image_dimensions'), 10);
   }
 
   /**
@@ -248,11 +248,11 @@ class TabulaRasa {
    */
   function bulletproof_jquery() {
     global $wp_scripts;
-		$jquery_version = '';
+    $jquery_version = '';
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? 'https' : 'http';
-		if(isset($wp_scripts)) {
-			$jquery_version = $wp_scripts->registered['jquery']->ver;
-		}
+    if (isset($wp_scripts)) {
+      $jquery_version = $wp_scripts->registered['jquery']->ver;
+    }
     $url = $protocol . '://ajax.googleapis.com/ajax/libs/jquery/' . $jquery_version . '/jquery.min.js';
     wp_deregister_script('jquery');
     if (get_transient('google_jquery') == true) {
@@ -364,6 +364,17 @@ class TabulaRasa {
   }
 
   /**
+   * Removes the width and height attributes from HTML <img> elements in content
+   * 
+   * @param string $html
+   * @return string
+   */
+  function remove_image_dimensions($html) {
+    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
+    return $html;
+  }
+
+  /**
    * Updates the user profile with some more up to date contact methods.
    * 
    * @param array $contact_methods
@@ -437,7 +448,7 @@ class TabulaRasa {
       }
     }
   }
-  
+
   /**
    * Stores the current template for later retrieval
    * 
