@@ -9,7 +9,6 @@ takes care of clearing the previous row and removing the left margin.
 
 .container {
 	margin: 2px auto;
-	max-width: 70em;
 }
 
 .container:before,
