@@ -35,7 +35,7 @@ function TabulaRasa_setup() {
   $TabulaRasa = TabulaRasa::get_instance();
 }
 
-add_action('init', 'TabulaRasa_setup');
+add_action('after_setup_theme', 'TabulaRasa_setup');
 
 /**
  * Register widgetized areas, including two sidebars and four widget-ready columns in the footer.
