@@ -175,7 +175,6 @@ class TabulaRasa {
     add_filter('style_loader_tag', array(&$this, 'cleanup_type'));
     add_filter('wp_title', array(&$this, 'filter_wp_title'), 10, 2);
     add_action('widgets_init', array(&$this, 'remove_recent_comments_style'));
-    add_theme_support('html5');
   }
 
   /**
