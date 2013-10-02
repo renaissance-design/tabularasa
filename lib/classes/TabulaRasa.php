@@ -35,9 +35,9 @@ class TabulaRasa {
 
     add_action('after_setup_theme', array(&$this, 'setup'));
 
-    if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_SOFTWARE'], 'litespeed') !== false) {
+    if(current_theme_supports('firewall') && stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_SOFTWARE'], 'litespeed') !== false) {
       require_once(locate_template('/lib/classes/htaccess.php'));
-      // $this->htaccess = new TabulaRasa_htaccess($this->slug);
+      $this->htaccess = new TabulaRasa_htaccess($this->slug);
     }
 
     require_once(locate_template('/lib/classes/options.php'));
