@@ -12,6 +12,8 @@
  * Set up theme features
  */
 function TabulaRasa_setup() {
+	
+	require_once(locate_template('/lib/classes/TabulaRasa.php'));
 
   /* HTML5 features */
   add_theme_support('html5');
@@ -30,7 +32,7 @@ function TabulaRasa_setup() {
       'secondary' => __('Secondary Navigation', TabulaRasa::get_textdomain())
   ));
 
-  require_once(locate_template('/lib/classes/TabulaRasa.php'));
+  
 
   $TabulaRasa = TabulaRasa::get_instance();
 }
