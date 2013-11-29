@@ -26,15 +26,13 @@ function TabulaRasa_setup() {
 
   /* .htaccess firewall */
   add_theme_support('firewall');
+	
+	$TabulaRasa = TabulaRasa::get_instance();
 
   register_nav_menus(array(
       'primary' => __('Primary Navigation', TabulaRasa::get_textdomain()),
       'secondary' => __('Secondary Navigation', TabulaRasa::get_textdomain())
-  ));
-
-  
-
-  $TabulaRasa = TabulaRasa::get_instance();
+  ));  
 }
 
 add_action('after_setup_theme', 'TabulaRasa_setup');
