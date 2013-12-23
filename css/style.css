@@ -1,0 +1,101 @@
+/*
+Theme Name: Tabula Rasa
+Theme URI: 
+Description: A blank slate for WordPress development
+Version: 1.11
+Author: Chris Cox
+Author URI: http://www.renaissance-design.net
+Tags: clean, basic, framework
+*/
+
+/* Eric Meyer's reset */
+@import "reset.css";
+
+/* Some basic typographic defaults */
+@import typography.css";
+
+/* Default grid - you're strongly encouraged to replace this with your own */
+@import "grids/grid-12col-fluid.css";
+
+
+/* Some layout defaults */
+
+header, nav, footer, .content, .sidebar, .xoxo>li {
+	margin-bottom: 1.5em;
+}
+
+/* Navigation */
+
+.menu li {
+	float: left;
+	margin-right: 30px;
+	position: relative;
+}
+
+.menu li ul {
+	display: none;
+	border: 1px dotted #aaa;
+	position: absolute;
+	top: 100%;
+}
+
+.menu li:hover>ul {
+	display: block;
+	float: left;
+	width: auto;
+}
+
+.menu li li {
+	float: none;
+	display: block;
+	min-width: 100%;
+}
+
+.menu li li a {
+	display: block;
+	padding: .2em 1em;
+	background-color: #fff;
+}
+
+.menu li li ul {
+	left: 100%;
+	top: 0;
+}
+
+/* End navigation */
+
+.aligncenter { 
+	display:block; 
+	margin:0 auto; 
+}
+.alignleft { 
+	float:left;
+}
+.alignright { 
+	float:right;
+}
+.wp-caption { 
+	border:1px solid #666; 
+	text-align:center; 
+	background:#ccc; 
+	padding:10px; 
+	margin:10px 0;
+	max-width: 100%;
+}
+.access {
+	display: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.page-numbers {
+	overflow: hidden;
+}
+
+.page-numbers li {
+	float: left;
+	margin: 0 1em 0 0;
+}

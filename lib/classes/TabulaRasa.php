@@ -34,10 +34,12 @@ class TabulaRasa {
     add_action('init', array(&$this, 'init'));
 
     add_action('after_setup_theme', array(&$this, 'setup'));
+    
+    add_action('wp_enqueue_scripts', array(&$this, 'enqueue_styles'));
 
     if(current_theme_supports('firewall') && stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_SOFTWARE'], 'litespeed') !== false) {
       require_once(locate_template('/lib/classes/htaccess.php'));
-      $this->htaccess = new TabulaRasa_htaccess($this->slug);
+      // $this->htaccess = new TabulaRasa_htaccess($this->slug);
     }
 
     require_once(locate_template('/lib/classes/options.php'));
@@ -61,6 +63,10 @@ class TabulaRasa {
       self::$instance = new $c();
     }
     return self::$instance;
+  }
+  
+  public function enqueue_styles() {
+    wp_enqueue_style('main', get_stylesheet_directory_uri() . '/css/style.css');
   }
 
   /**

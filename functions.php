@@ -27,7 +27,7 @@ function TabulaRasa_setup() {
   /* .htaccess firewall */
   add_theme_support('firewall');
 	
-	$TabulaRasa = TabulaRasa::get_instance();
+  $TabulaRasa = TabulaRasa::get_instance();
 
   register_nav_menus(array(
       'primary' => __('Primary Navigation', TabulaRasa::get_textdomain()),
