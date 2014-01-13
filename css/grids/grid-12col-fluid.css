@@ -8,7 +8,7 @@ takes care of clearing the previous row and removing the left margin.
 */
 
 .container {
-	margin: 2px auto;
+	margin: 0 auto;
 }
 
 .container:before,
