@@ -1,24 +1,17 @@
-/*
-Theme Name: Tabula Rasa
-Theme URI: 
-Description: A blank slate for WordPress development
-Version: 1.11
-Author: Chris Cox
-Author URI: http://www.renaissance-design.net
-Tags: clean, basic, framework
+/* 
+
+Framework CSS 
+These styles can be overridden by the developer in the theme's stylesheet
+
 */
-
-/* Eric Meyer's reset */
-@import "reset.css";
-
-/* Some basic typographic defaults */
-@import typography.css";
-
-/* Default grid - you're strongly encouraged to replace this with your own */
-@import "grids/grid-12col-fluid.css";
 
 
 /* Some layout defaults */
+
+.container {
+  max-width: 80em;
+  padding: 0 1.5em; 
+}
 
 header, nav, footer, .content, .sidebar, .xoxo>li {
 	margin-bottom: 1.5em;
