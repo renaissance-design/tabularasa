@@ -11,7 +11,6 @@ class TabulaRasa {
 
   private static $instance;
   public $slug;
-  private $htaccess;
   private $options;
   private $theme;
   public $settings;
@@ -38,11 +37,6 @@ class TabulaRasa {
     add_action('after_setup_theme', array(&$this, 'setup'));
 
     add_action('wp_enqueue_scripts', array(&$this, 'enqueue_styles'));
-
-    if (current_theme_supports('firewall') && stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_SOFTWARE'], 'litespeed') !== false) {
-      require_once(locate_template('/lib/classes/htaccess.php'));
-      $this->htaccess = new TabulaRasa_htaccess($this->slug);
-    }
 
     require_once(locate_template('/lib/classes/options.php'));
     $this->options = new TabulaRasa_options($this->slug, $this->theme->name);
