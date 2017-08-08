@@ -174,3 +174,4 @@ nbactions.xml
 nb-configuration.xml
 !/lang/en_GB.mo
 nbproject/project.properties
+*.properties
