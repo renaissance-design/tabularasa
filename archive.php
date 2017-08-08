@@ -27,13 +27,13 @@ get_header(); ?>
 
 			<h1>
 <?php if ( is_day() ) : ?>
-				<?php printf( __( 'Daily Archives: %s', TabulaRasa::get_textdomain() ), get_the_date() ); ?>
+				<?php printf( __( 'Daily Archives: %s', 'tabularasa' ), get_the_date() ); ?>
 <?php elseif ( is_month() ) : ?>
-				<?php printf( __( 'Monthly Archives: %s', TabulaRasa::get_textdomain() ), get_the_date('F Y') ); ?>
+				<?php printf( __( 'Monthly Archives: %s', 'tabularasa' ), get_the_date('F Y') ); ?>
 <?php elseif ( is_year() ) : ?>
-				<?php printf( __( 'Yearly Archives: %s', TabulaRasa::get_textdomain() ), get_the_date('Y') ); ?>
+				<?php printf( __( 'Yearly Archives: %s', 'tabularasa' ), get_the_date('Y') ); ?>
 <?php else : ?>
-				<?php _e( 'Blog Archives', TabulaRasa::get_textdomain() ); ?>
+				<?php _e( 'Blog Archives', 'tabularasa' ); ?>
 <?php endif; ?>
 			</h1>
 

@@ -18,8 +18,8 @@ get_header(); ?>
 
 				<h1><?php the_title(); ?></h1>
 				<?php the_content(); ?>
-				<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', TabulaRasa::get_textdomain() ), 'after' => '' ) ); ?>
-				<?php edit_post_link( __( 'Edit', TabulaRasa::get_textdomain() ), '', '' ); ?>
+				<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'tabularasa' ), 'after' => '' ) ); ?>
+				<?php edit_post_link( __( 'Edit', 'tabularasa' ), '', '' ); ?>
 
 				<?php comments_template( '', true ); ?>
 

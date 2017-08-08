@@ -11,26 +11,26 @@ get_header(); ?>
 <div class="content grid8 first" role="main">
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
-				<p><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php esc_attr( printf( __( 'Return to %s', TabulaRasa::get_textdomain() ), get_the_title( $post->post_parent ) ) ); ?>" rel="gallery"><?php
+				<p><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php esc_attr( printf( __( 'Return to %s', 'tabularasa' ), get_the_title( $post->post_parent ) ) ); ?>" rel="gallery"><?php
 					/* translators: %s - title of parent post */
-					printf( __( '<span>&larr;</span> %s', TabulaRasa::get_textdomain() ), get_the_title( $post->post_parent ) );
+					printf( __( '<span>&larr;</span> %s', 'tabularasa' ), get_the_title( $post->post_parent ) );
 				?></a></p>
 
 					<h2><?php the_title(); ?></h2>
 
 						<?php
-							printf(__('By %2$s', TabulaRasa::get_textdomain()),
+							printf(__('By %2$s', 'tabularasa'),
 								'meta-prep meta-prep-author',
 								sprintf( '<a class="url fn n" href="%1$s" title="%2$s">%3$s</a>',
 									get_author_posts_url( get_the_author_meta( 'ID' ) ),
-									sprintf( esc_attr__( 'View all posts by %s', TabulaRasa::get_textdomain() ), get_the_author() ),
+									sprintf( esc_attr__( 'View all posts by %s', 'tabularasa' ), get_the_author() ),
 									get_the_author()
 								)
 							);
 						?>
 						<span>|</span>
 						<?php
-							printf( __('Published %2$s', TabulaRasa::get_textdomain()),
+							printf( __('Published %2$s', 'tabularasa'),
 								'meta-prep meta-prep-entry-date',
 								sprintf( '<abbr title="%1$s">%2$s</abbr>',
 									esc_attr( get_the_time() ),
@@ -40,17 +40,17 @@ get_header(); ?>
 							if ( wp_attachment_is_image() ) {
 								echo ' | ';
 								$metadata = wp_get_attachment_metadata();
-								printf( __( 'Full size is %s pixels', TabulaRasa::get_textdomain()),
+								printf( __( 'Full size is %s pixels', 'tabularasa'),
 									sprintf( '<a href="%1$s" title="%2$s">%3$s &times; %4$s</a>',
 										wp_get_attachment_url(),
-										esc_attr( __('Link to full-size image', TabulaRasa::get_textdomain()) ),
+										esc_attr( __('Link to full-size image', 'tabularasa') ),
 										$metadata['width'],
 										$metadata['height']
 									)
 								);
 							}
 						?>
-						<?php edit_post_link( __( 'Edit', TabulaRasa::get_textdomain() ), '', '' ); ?>
+						<?php edit_post_link( __( 'Edit', 'tabularasa' ), '', '' ); ?>
 					</div><!-- .entry-meta -->
 
 <?php if ( wp_attachment_is_image() ) :
@@ -85,11 +85,11 @@ get_header(); ?>
 <?php endif; ?>
 						<?php if ( !empty( $post->post_excerpt ) ) the_excerpt(); ?>
 
-<?php the_content( __( 'Continue reading &rarr;', TabulaRasa::get_textdomain() ) ); ?>
-<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', TabulaRasa::get_textdomain() ), 'after' => '' ) ); ?>
+<?php the_content( __( 'Continue reading &rarr;', 'tabularasa' ) ); ?>
+<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'tabularasa' ), 'after' => '' ) ); ?>
 
 						<?php twentyten_posted_in(); ?>
-						<?php edit_post_link( __( 'Edit', TabulaRasa::get_textdomain() ), ' ', '' ); ?>
+						<?php edit_post_link( __( 'Edit', 'tabularasa' ), ' ', '' ); ?>
 
 <?php comments_template(); ?>
 

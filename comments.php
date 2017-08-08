@@ -14,7 +14,7 @@
 ?>
 
 <?php if ( post_password_required() ) : ?>
-				<p><?php _e( 'This post is password protected. Enter the password to view any comments.', TabulaRasa::get_textdomain() ); ?></p>
+				<p><?php _e( 'This post is password protected. Enter the password to view any comments.', 'tabularasa' ); ?></p>
 <?php
 		/* Stop the rest of comments.php from being processed,
 		 * but don't kill the script entirely -- we still have
@@ -30,13 +30,13 @@
 
 <?php if ( have_comments() ) : ?>
 			<h3 id="comments-title"><?php
-			printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), TabulaRasa::get_textdomain() ),
+			printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'tabularasa' ),
 			number_format_i18n( get_comments_number() ), '' . get_the_title() . '' );
 			?></h3>
 
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-				<?php previous_comments_link( __( '&larr; Older Comments', TabulaRasa::get_textdomain() ) ); ?>
-				<?php next_comments_link( __( 'Newer Comments &rarr;', TabulaRasa::get_textdomain() ) ); ?>
+				<?php previous_comments_link( __( '&larr; Older Comments', 'tabularasa' ) ); ?>
+				<?php next_comments_link( __( 'Newer Comments &rarr;', 'tabularasa' ) ); ?>
 <?php endif; // check for comment navigation ?>
 
 			<ol>
@@ -44,8 +44,8 @@
 			</ol>
 
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
-				<?php previous_comments_link( __( '&larr; Older Comments', TabulaRasa::get_textdomain() ) ); ?>
-				<?php next_comments_link( __( 'Newer Comments &rarr;', TabulaRasa::get_textdomain() ) ); ?>
+				<?php previous_comments_link( __( '&larr; Older Comments', 'tabularasa' ) ); ?>
+				<?php next_comments_link( __( 'Newer Comments &rarr;', 'tabularasa' ) ); ?>
 <?php endif; // check for comment navigation ?>
 
 <?php else : // or, if we don't have comments:
@@ -55,7 +55,7 @@
 	 */
 	if ( ! comments_open() ) :
 ?>
-	<p><?php _e( 'Comments are closed.', TabulaRasa::get_textdomain() ); ?></p>
+	<p><?php _e( 'Comments are closed.', 'tabularasa' ); ?></p>
 <?php endif; // end ! comments_open() ?>
 
 <?php endif; // end have_comments() ?>

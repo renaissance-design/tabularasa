@@ -21,21 +21,21 @@ get_header(); ?>
 		the_post();
 ?>
 
-	<h1><?php printf( __( 'Author Archives: %s', TabulaRasa::get_textdomain() ), "<a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a>" ); ?></h1>
+	<h1><?php printf( __( 'Author Archives: %s', 'tabularasa' ), "<a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a>" ); ?></h1>
 	<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentyten_author_bio_avatar_size', 60 ) ); ?>
-	<h2><?php printf( __( 'About %s', TabulaRasa::get_textdomain() ), get_the_author() ); ?></h2>
+	<h2><?php printf( __( 'About %s', 'tabularasa' ), get_the_author() ); ?></h2>
 	
     <ul class="author_info">
     <?php if (get_the_author_meta('user_url')) : ?>
-      <li><span class="author_info_field_title"><?php _e('Website', TabulaRasa::get_textdomain()); ?>:</span> <a href="<?php the_author_meta('url'); ?>" rel="me"><?php the_author_meta('url'); ?></a></li>
+      <li><span class="author_info_field_title"><?php _e('Website', 'tabularasa'); ?>:</span> <a href="<?php the_author_meta('url'); ?>" rel="me"><?php the_author_meta('url'); ?></a></li>
         <?php 
         endif; 
         if (get_the_author_meta('twitter')) : ?>
-      <li><span class="author_info_field_title"><?php _e('Twitter', TabulaRasa::get_textdomain());?>:</span> <a href="<?php the_author_meta('twitter'); ?>"><?php the_author_meta('twitter'); ?></a></li>
+      <li><span class="author_info_field_title"><?php _e('Twitter', 'tabularasa');?>:</span> <a href="<?php the_author_meta('twitter'); ?>"><?php the_author_meta('twitter'); ?></a></li>
         <?php 
         endif; 
         if (get_the_author_meta('description')) : ?>
-      <li><span class="author_info_field_title"><?php _e('Profile', TabulaRasa::get_textdomain()); ?>:</span> <?php the_author_meta('description'); ?></li>
+      <li><span class="author_info_field_title"><?php _e('Profile', 'tabularasa'); ?>:</span> <?php the_author_meta('description'); ?></li>
         <?php endif; ?>
     </ul>
 

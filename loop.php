@@ -26,8 +26,8 @@
 
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if (!have_posts()) : ?>
-	<h1><?php _e('Not Found', TabulaRasa::get_textdomain()); ?></h1>
-	<p><?php _e('Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', TabulaRasa::get_textdomain()); ?></p>
+	<h1><?php _e('Not Found', 'tabularasa'); ?></h1>
+	<p><?php _e('Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'tabularasa'); ?></p>
 	<?php get_search_form(); ?>
 
 <?php endif; ?>
@@ -50,8 +50,8 @@
 
 	<?php /* How to display posts in the Gallery category. */ ?>
 
-	<?php if (in_category(_x('gallery', 'gallery category slug', TabulaRasa::get_textdomain()))) : ?>
-		<h2><a href="<?php the_permalink(); ?>" title="<?php printf(esc_attr__('Permalink to %s', TabulaRasa::get_textdomain()), the_title_attribute('echo=0')); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+	<?php if (in_category(_x('gallery', 'gallery category slug', 'tabularasa'))) : ?>
+		<h2><a href="<?php the_permalink(); ?>" title="<?php printf(esc_attr__('Permalink to %s', 'tabularasa'), the_title_attribute('echo=0')); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 		<?php twentyten_posted_on(); ?>
 
 		<?php if (post_password_required()) : ?>
@@ -66,59 +66,59 @@
 			<a href="<?php the_permalink(); ?>"><?php echo $image_img_tag; ?></a>
 
 			<p><?php
-			printf(__('This gallery contains <a %1$s>%2$s photos</a>.', TabulaRasa::get_textdomain()), 'href="' . get_permalink() . '" title="' . sprintf(esc_attr__('Permalink to %s', TabulaRasa::get_textdomain()), the_title_attribute('echo=0')) . '" rel="bookmark"', $total_images
+			printf(__('This gallery contains <a %1$s>%2$s photos</a>.', 'tabularasa'), 'href="' . get_permalink() . '" title="' . sprintf(esc_attr__('Permalink to %s', 'tabularasa'), the_title_attribute('echo=0')) . '" rel="bookmark"', $total_images
 			);
 			?></p>
 
 			<?php the_excerpt(); ?>
 		<?php endif; ?>
 
-		<a href="<?php echo get_term_link(_x('gallery', 'gallery category slug', TabulaRasa::get_textdomain()), 'category'); ?>" title="<?php esc_attr_e('View posts in the Gallery category', TabulaRasa::get_textdomain()); ?>"><?php _e('More Galleries', TabulaRasa::get_textdomain()); ?></a>
+		<a href="<?php echo get_term_link(_x('gallery', 'gallery category slug', 'tabularasa'), 'category'); ?>" title="<?php esc_attr_e('View posts in the Gallery category', 'tabularasa'); ?>"><?php _e('More Galleries', 'tabularasa'); ?></a>
 		|
-		<?php comments_popup_link(__('Leave a comment', TabulaRasa::get_textdomain()), __('1 Comment', TabulaRasa::get_textdomain()), __('% Comments', TabulaRasa::get_textdomain())); ?>
-		<?php edit_post_link(__('Edit', TabulaRasa::get_textdomain()), '|', ''); ?>
+		<?php comments_popup_link(__('Leave a comment', 'tabularasa'), __('1 Comment', 'tabularasa'), __('% Comments', 'tabularasa')); ?>
+		<?php edit_post_link(__('Edit', 'tabularasa'), '|', ''); ?>
 
 		<?php /* How to display posts in the asides category */ ?>
 
-	<?php elseif (in_category(_x('asides', 'asides category slug', TabulaRasa::get_textdomain()))) : ?>
+	<?php elseif (in_category(_x('asides', 'asides category slug', 'tabularasa'))) : ?>
 
 		<?php if (is_archive() || is_search()) : // Display excerpts for archives and search.  ?>
 			<?php the_excerpt(); ?>
 		<?php else : ?>
-			<?php the_content(__('Continue reading &rarr;', TabulaRasa::get_textdomain())); ?>
+			<?php the_content(__('Continue reading &rarr;', 'tabularasa')); ?>
 		<?php endif; ?>
 
 		<?php twentyten_posted_on(); ?>
 		|
-		<?php comments_popup_link(__('Leave a comment', TabulaRasa::get_textdomain()), __('1 Comment', TabulaRasa::get_textdomain()), __('% Comments', TabulaRasa::get_textdomain())); ?>
-		<?php edit_post_link(__('Edit', TabulaRasa::get_textdomain()), '| ', ''); ?>
+		<?php comments_popup_link(__('Leave a comment', 'tabularasa'), __('1 Comment', 'tabularasa'), __('% Comments', 'tabularasa')); ?>
+		<?php edit_post_link(__('Edit', 'tabularasa'), '| ', ''); ?>
 
 		<?php /* How to display all other posts. */ ?>
 
 	<?php else : ?>
-		<h2><a href="<?php the_permalink(); ?>" title="<?php printf(esc_attr__('Permalink to %s', TabulaRasa::get_textdomain()), the_title_attribute('echo=0')); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+		<h2><a href="<?php the_permalink(); ?>" title="<?php printf(esc_attr__('Permalink to %s', 'tabularasa'), the_title_attribute('echo=0')); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 		<?php twentyten_posted_on(); ?>
 
 		<?php if (is_archive() || is_search()) : // Only display excerpts for archives and search.  ?>
 			<?php the_excerpt(); ?>
 		<?php else : ?>
-			<?php the_content(__('Continue reading &rarr;', TabulaRasa::get_textdomain())); ?>
-			<?php wp_link_pages(array('before' => '' . __('Pages:', TabulaRasa::get_textdomain()), 'after' => '')); ?>
+			<?php the_content(__('Continue reading &rarr;', 'tabularasa')); ?>
+			<?php wp_link_pages(array('before' => '' . __('Pages:', 'tabularasa'), 'after' => '')); ?>
 		<?php endif; ?>
 
 		<?php if (count(get_the_category())) : ?>
-			<?php printf(__('Posted in %2$s', TabulaRasa::get_textdomain()), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list(', ')); ?>
+			<?php printf(__('Posted in %2$s', 'tabularasa'), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list(', ')); ?>
 			|
 		<?php endif; ?>
 		<?php
 		$tags_list = get_the_tag_list('', ', ');
 		if ($tags_list):
 			?>
-			<?php printf(__('Tagged %2$s', TabulaRasa::get_textdomain()), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list); ?>
+			<?php printf(__('Tagged %2$s', 'tabularasa'), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list); ?>
 			|
 		<?php endif; ?>
-		<?php comments_popup_link(__('Leave a comment', TabulaRasa::get_textdomain()), __('1 Comment', TabulaRasa::get_textdomain()), __('% Comments', TabulaRasa::get_textdomain())); ?>
-		<?php edit_post_link(__('Edit', TabulaRasa::get_textdomain()), '| ', ''); ?>
+		<?php comments_popup_link(__('Leave a comment', 'tabularasa'), __('1 Comment', 'tabularasa'), __('% Comments', 'tabularasa')); ?>
+		<?php edit_post_link(__('Edit', 'tabularasa'), '| ', ''); ?>
 
 		<?php comments_template('', true); ?>
 

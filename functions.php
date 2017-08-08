@@ -30,8 +30,8 @@ function TabulaRasa_setup() {
   $TabulaRasa = TabulaRasa::get_instance();
 
   register_nav_menus(array(
-      'primary' => __('Primary Navigation', TabulaRasa::get_textdomain()),
-      'secondary' => __('Secondary Navigation', TabulaRasa::get_textdomain())
+      'primary' => __('Primary Navigation', 'tabularasa'),
+      'secondary' => __('Secondary Navigation', 'tabularasa')
   ));  
 }
 
@@ -49,9 +49,9 @@ add_action('after_setup_theme', 'TabulaRasa_setup');
 function twentyten_widgets_init() {
   // Area 1, located at the top of the sidebar.
   register_sidebar(array(
-      'name' => __('Primary Widget Area', TabulaRasa::get_textdomain()),
+      'name' => __('Primary Widget Area', 'tabularasa'),
       'id' => 'primary-widget-area',
-      'description' => __('The primary widget area', TabulaRasa::get_textdomain()),
+      'description' => __('The primary widget area', 'tabularasa'),
       'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
       'after_widget' => '</li>',
       'before_title' => '<h3 class="widget-title">',
@@ -60,9 +60,9 @@ function twentyten_widgets_init() {
 
   // Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
   register_sidebar(array(
-      'name' => __('Secondary Widget Area', TabulaRasa::get_textdomain()),
+      'name' => __('Secondary Widget Area', 'tabularasa'),
       'id' => 'secondary-widget-area',
-      'description' => __('The secondary widget area', TabulaRasa::get_textdomain()),
+      'description' => __('The secondary widget area', 'tabularasa'),
       'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
       'after_widget' => '</li>',
       'before_title' => '<h3 class="widget-title">',
@@ -71,9 +71,9 @@ function twentyten_widgets_init() {
 
   // Area 3, located in the footer. Empty by default.
   register_sidebar(array(
-      'name' => __('First Footer Widget Area', TabulaRasa::get_textdomain()),
+      'name' => __('First Footer Widget Area', 'tabularasa'),
       'id' => 'first-footer-widget-area',
-      'description' => __('The first footer widget area', TabulaRasa::get_textdomain()),
+      'description' => __('The first footer widget area', 'tabularasa'),
       'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
       'after_widget' => '</li>',
       'before_title' => '<h3 class="widget-title">',
@@ -82,9 +82,9 @@ function twentyten_widgets_init() {
 
   // Area 4, located in the footer. Empty by default.
   register_sidebar(array(
-      'name' => __('Second Footer Widget Area', TabulaRasa::get_textdomain()),
+      'name' => __('Second Footer Widget Area', 'tabularasa'),
       'id' => 'second-footer-widget-area',
-      'description' => __('The second footer widget area', TabulaRasa::get_textdomain()),
+      'description' => __('The second footer widget area', 'tabularasa'),
       'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
       'after_widget' => '</li>',
       'before_title' => '<h3 class="widget-title">',
@@ -93,9 +93,9 @@ function twentyten_widgets_init() {
 
   // Area 5, located in the footer. Empty by default.
   register_sidebar(array(
-      'name' => __('Third Footer Widget Area', TabulaRasa::get_textdomain()),
+      'name' => __('Third Footer Widget Area', 'tabularasa'),
       'id' => 'third-footer-widget-area',
-      'description' => __('The third footer widget area', TabulaRasa::get_textdomain()),
+      'description' => __('The third footer widget area', 'tabularasa'),
       'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
       'after_widget' => '</li>',
       'before_title' => '<h3 class="widget-title">',
@@ -104,9 +104,9 @@ function twentyten_widgets_init() {
 
   // Area 6, located in the footer. Empty by default.
   register_sidebar(array(
-      'name' => __('Fourth Footer Widget Area', TabulaRasa::get_textdomain()),
+      'name' => __('Fourth Footer Widget Area', 'tabularasa'),
       'id' => 'fourth-footer-widget-area',
-      'description' => __('The fourth footer widget area', TabulaRasa::get_textdomain()),
+      'description' => __('The fourth footer widget area', 'tabularasa'),
       'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
       'after_widget' => '</li>',
       'before_title' => '<h3 class="widget-title">',
@@ -125,8 +125,8 @@ if (!function_exists('twentyten_posted_on')) :
    * @since Twenty Ten 1.0
    */
   function twentyten_posted_on() {
-    printf(__('<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', TabulaRasa::get_textdomain()), 'meta-prep meta-prep-author', sprintf('<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>', get_permalink(), esc_attr(get_the_time()), get_the_date()
-            ), sprintf('<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>', get_author_posts_url(get_the_author_meta('ID')), sprintf(esc_attr__('View all posts by %s', TabulaRasa::get_textdomain()), get_the_author()), get_the_author()
+    printf(__('<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'tabularasa'), 'meta-prep meta-prep-author', sprintf('<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>', get_permalink(), esc_attr(get_the_time()), get_the_date()
+            ), sprintf('<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>', get_author_posts_url(get_the_author_meta('ID')), sprintf(esc_attr__('View all posts by %s', 'tabularasa'), get_the_author()), get_the_author()
             )
     );
   }
@@ -144,13 +144,13 @@ if (!function_exists('twentyten_posted_in')) :
     // Retrieves tag list of current post, separated by commas.
     $tag_list = get_the_tag_list('', ', ');
     if ($tag_list) {
-      $posted_in = __('This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', TabulaRasa::get_textdomain());
+      $posted_in = __('This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'tabularasa');
     }
     elseif (is_object_in_taxonomy(get_post_type(), 'category')) {
-      $posted_in = __('This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', TabulaRasa::get_textdomain());
+      $posted_in = __('This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'tabularasa');
     }
     else {
-      $posted_in = __('Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', TabulaRasa::get_textdomain());
+      $posted_in = __('Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'tabularasa');
     }
     // Prints the string, replacing the placeholders.
     printf(

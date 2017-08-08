@@ -11,8 +11,8 @@ get_header(); ?>
 <div class="content grid8 first" role="main">
 
 
-				<h1><?php _e( 'Not Found', TabulaRasa::get_textdomain() ); ?></h1>
-				<p><?php _e( 'Apologies, but the page you requested could not be found. Perhaps searching will help.', TabulaRasa::get_textdomain() ); ?></p>
+				<h1><?php _e( 'Not Found', 'tabularasa' ); ?></h1>
+				<p><?php _e( 'Apologies, but the page you requested could not be found. Perhaps searching will help.', 'tabularasa' ); ?></p>
 				<?php get_search_form(); ?>
 
 	<script type="text/javascript">

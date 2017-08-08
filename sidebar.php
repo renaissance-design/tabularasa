@@ -23,14 +23,14 @@
 			</li>
 
 			<li>
-				<h3><?php _e( 'Archives', TabulaRasa::get_textdomain() ); ?></h3>
+				<h3><?php _e( 'Archives', 'tabularasa' ); ?></h3>
 				<ul>
 					<?php wp_get_archives( 'type=monthly' ); ?>
 				</ul>
 			</li>
 
 			<li>
-				<h3><?php _e( 'Meta', TabulaRasa::get_textdomain() ); ?></h3>
+				<h3><?php _e( 'Meta', 'tabularasa' ); ?></h3>
 				<ul>
 					<?php wp_register(); ?>
 					<li><?php wp_loginout(); ?></li>
