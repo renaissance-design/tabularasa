@@ -26,7 +26,7 @@ class TabulaRasa {
 
     $this->slug = sanitize_title_with_dashes($this->theme->name);
     
-    load_theme_textdomain($this->slug, get_template_directory() . '/lang');
+    load_theme_textdomain('tabularasa', get_template_directory() . '/lang');
 
     $this->settings = get_option('TabulaRasa_general_settings');
 
@@ -78,15 +78,6 @@ class TabulaRasa {
   }
 
   /**
-   * Returns the theme's textdomain for use in templates
-   * 
-   * @return string
-   */
-  public static function get_textdomain() {
-    return self::$instance->slug;
-  }
-
-  /**
    * Echo pagination. If used with a custom query, it needs to be passed as an argument. Otherwise it assumes the default $wp_query
    * 
    * @param object $query An instance of WP_Query
@@ -101,11 +92,11 @@ class TabulaRasa {
       echo '<nav class="pagination">';
       echo paginate_links(array(
           'base' => get_pagenum_link(1) . '%_%',
-          'format' => __('page', self::$instance->get_textdomain()) . '/%#%',
+          'format' => __('page', 'tabularasa') . '/%#%',
           'current' => $current_page,
           'total' => $query->max_num_pages,
-          'prev_text' => __('Prev', self::$instance->get_textdomain()),
-          'next_text' => __('Next', self::$instance->get_textdomain()),
+          'prev_text' => __('Prev', 'tabularasa'),
+          'next_text' => __('Next', 'tabularasa'),
           'type' => 'list'
       ));
       echo '</nav>';
