@@ -64,6 +64,11 @@ class TabulaRasa {
     return self::$instance;
   }
 
+	/**
+	 * Enqueues the default stylesheets
+	 * 
+	 * @return void
+	 */
   public function enqueue_styles() {
     wp_enqueue_style('reset', get_stylesheet_directory_uri() . '/css/reset.css');
     wp_enqueue_style('typography', get_stylesheet_directory_uri() . '/css/typography.css');
@@ -343,6 +348,8 @@ class TabulaRasa {
 
   /**
    * Show home link in wp_page_menu() by default
+	 * 
+	 * @param array $args
    */
   function page_menu_args($args) {
     $args['show_home'] = true;
