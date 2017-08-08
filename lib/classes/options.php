@@ -6,7 +6,7 @@
 class TabulaRasa_options {
 
   /**
-   * Theme slug, used for textdomain
+   * Theme slug
    * 
    * @var string 
    */
