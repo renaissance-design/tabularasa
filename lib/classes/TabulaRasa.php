@@ -22,33 +22,33 @@ class TabulaRasa {
    */
   public function __construct() {
 
-    $this->theme = wp_get_theme();
+	$this->theme = wp_get_theme();
 
-    $this->slug = sanitize_title_with_dashes($this->theme->name);
-    
-    load_theme_textdomain('tabularasa', get_template_directory() . '/lang');
+	$this->slug = sanitize_title_with_dashes( $this->theme->name );
 
-    $this->settings = get_option('TabulaRasa_general_settings');
+	load_theme_textdomain( 'tabularasa', get_template_directory() . '/lang' );
 
-    $this->dev = array();
+	$this->settings = get_option( 'TabulaRasa_general_settings' );
 
-    add_action('init', array(&$this, 'init'));
+	$this->dev = array();
 
-    add_action('after_setup_theme', array(&$this, 'setup'));
+	add_action( 'init', array( $this, 'init' ) );
 
-    add_action('wp_enqueue_scripts', array(&$this, 'enqueue_styles'));
+	add_action( 'after_setup_theme', array( $this, 'setup' ) );
 
-    require_once(locate_template('/lib/classes/options.php'));
-    $this->options = new TabulaRasa_options($this->slug, $this->theme->name);
+	add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 
-    if (!class_exists('SmartMetaBox')) {
-      require_once(locate_template('/lib/classes/meta.php'));
-    }
+	require_once(locate_template( '/lib/classes/options.php' ));
+	$this->options = new TabulaRasa_options( $this->slug, $this->theme->name );
 
-    add_action('widgets_init', array(&$this, 'register_widgets'));
-    
-    add_action('after_switch_theme', array(&$this, 'activate'), 10, 2);
-    add_action('switch_theme', array(&$this, 'deactivate'), 10, 2);
+	if ( !class_exists( 'SmartMetaBox' ) ) {
+	  require_once(locate_template( '/lib/classes/meta.php' ));
+	}
+
+	add_action( 'widgets_init', array( $this, 'register_widgets' ) );
+
+	add_action( 'after_switch_theme', array( $this, 'activate' ), 10, 2 );
+	add_action( 'switch_theme', array( $this, 'deactivate' ), 10, 2 );
   }
 
   /**
@@ -57,24 +57,24 @@ class TabulaRasa {
    * @return object
    */
   public static function get_instance() {
-    if (!isset(self::$instance)) {
-      $c = __CLASS__;
-      self::$instance = new $c();
-    }
-    return self::$instance;
+	if ( !isset( self::$instance ) ) {
+	  $c				 = __CLASS__;
+	  self::$instance	 = new $c();
+	}
+	return self::$instance;
   }
 
-	/**
-	 * Enqueues the default stylesheets
-	 * 
-	 * @return void
-	 */
+  /**
+   * Enqueues the default stylesheets
+   * 
+   * @return void
+   */
   public function enqueue_styles() {
-    wp_enqueue_style('reset', get_stylesheet_directory_uri() . '/css/reset.css');
-    wp_enqueue_style('typography', get_stylesheet_directory_uri() . '/css/typography.css');
-    wp_enqueue_style('grid', get_stylesheet_directory_uri() . '/css/grids/grid-12col-fluid.css');
-    wp_enqueue_style('framework', get_stylesheet_directory_uri() . '/css/framework.css');
-    wp_enqueue_style('developer', get_stylesheet_directory_uri() . '/style.css');
+	wp_enqueue_style( 'reset', get_stylesheet_directory_uri() . '/css/reset.css' );
+	wp_enqueue_style( 'typography', get_stylesheet_directory_uri() . '/css/typography.css' );
+	wp_enqueue_style( 'grid', get_stylesheet_directory_uri() . '/css/grids/grid-12col-fluid.css' );
+	wp_enqueue_style( 'framework', get_stylesheet_directory_uri() . '/css/framework.css' );
+	wp_enqueue_style( 'developer', get_stylesheet_directory_uri() . '/style.css' );
   }
 
   /**
@@ -82,25 +82,25 @@ class TabulaRasa {
    * 
    * @param object $query An instance of WP_Query
    */
-  public static function paginate($query = '') {
-    if (!($query instanceof WP_Query)) {
-      global $wp_query;
-      $query = $wp_query;
-    }
-    if ($query->max_num_pages > 1) {
-      $current_page = max(1, get_query_var('paged'));
-      echo '<nav class="pagination">';
-      echo paginate_links(array(
-          'base' => get_pagenum_link(1) . '%_%',
-          'format' => __('page', 'tabularasa') . '/%#%',
-          'current' => $current_page,
-          'total' => $query->max_num_pages,
-          'prev_text' => __('Prev', 'tabularasa'),
-          'next_text' => __('Next', 'tabularasa'),
-          'type' => 'list'
-      ));
-      echo '</nav>';
-    }
+  public static function paginate( $query = '' ) {
+	if ( !($query instanceof WP_Query) ) {
+	  global $wp_query;
+	  $query = $wp_query;
+	}
+	if ( $query->max_num_pages > 1 ) {
+	  $current_page = max( 1, get_query_var( 'paged' ) );
+	  echo '<nav class="pagination">';
+	  echo paginate_links( array(
+		  'base'		 => get_pagenum_link( 1 ) . '%_%',
+		  'format'	 => __( 'page', 'tabularasa' ) . '/%#%',
+		  'current'	 => $current_page,
+		  'total'		 => $query->max_num_pages,
+		  'prev_text'	 => __( 'Prev', 'tabularasa' ),
+		  'next_text'	 => __( 'Next', 'tabularasa' ),
+		  'type'		 => 'list'
+	  ) );
+	  echo '</nav>';
+	}
   }
 
   /**
@@ -108,26 +108,25 @@ class TabulaRasa {
    */
   function init() {
 
-    if (is_admin()) {
-      add_editor_style('css/editor-style.css');
-      add_filter('user_contactmethods', array(&$this, 'update_contact_methods'), 10, 1);
-      add_filter('image_send_to_editor', array(&$this, 'remove_image_dimensions'), 10);
-    }
-    else {
-      add_action('wp_enqueue_scripts', array(&$this, 'bulletproof_jquery'), 20);
-      add_filter('wp_page_menu_args', array(&$this, 'page_menu_args'));
-      add_filter('excerpt_length', array(&$this, 'get_excerpt_length'));
-      add_filter('excerpt_more', array(&$this, 'auto_excerpt_more'));
-      add_filter('get_the_excerpt', array(&$this, 'custom_excerpt_more'));
-      add_action('admin_bar_menu', array(&$this, 'dev_toolbar_items'), 100);
-      add_filter('template_include', array(&$this, 'dev_template_id'), 1000);
-      add_filter('post_thumbnail_html', array(&$this, 'remove_image_dimensions'), 10);
-	  add_filter( 'script_loader_src', array($this, 'remove_script_version'), 15, 1 ); 
-	  add_filter( 'style_loader_src', array($this, 'remove_script_version'), 15, 1 );
-      $this->cleanup_header();
-      $this->cleanup_nav();
-      $this->dev_tools();
-    }
+	if ( is_admin() ) {
+	  add_editor_style( 'css/editor-style.css' );
+	  add_filter( 'user_contactmethods', array( $this, 'update_contact_methods' ), 10, 1 );
+	  add_filter( 'image_send_to_editor', array( $this, 'remove_image_dimensions' ), 10 );
+	} else {
+	  add_action( 'wp_enqueue_scripts', array( $this, 'bulletproof_jquery' ), 20 );
+	  add_filter( 'wp_page_menu_args', array( $this, 'page_menu_args' ) );
+	  add_filter( 'excerpt_length', array( $this, 'get_excerpt_length' ) );
+	  add_filter( 'excerpt_more', array( $this, 'auto_excerpt_more' ) );
+	  add_filter( 'get_the_excerpt', array( $this, 'custom_excerpt_more' ) );
+	  add_action( 'admin_bar_menu', array( $this, 'dev_toolbar_items' ), 100 );
+	  add_filter( 'template_include', array( $this, 'dev_template_id' ), 1000 );
+	  add_filter( 'post_thumbnail_html', array( $this, 'remove_image_dimensions' ), 10 );
+	  add_filter( 'script_loader_src', array( $this, 'remove_script_version' ), 15, 1 );
+	  add_filter( 'style_loader_src', array( $this, 'remove_script_version' ), 15, 1 );
+	  $this->cleanup_header();
+	  $this->cleanup_nav();
+	  $this->dev_tools();
+	}
   }
 
   /**
@@ -136,7 +135,7 @@ class TabulaRasa {
    * @since TabulaRasa 1.12
    */
   function activate() {
-    
+	
   }
 
   /**
@@ -145,7 +144,7 @@ class TabulaRasa {
    * @since TabulaRasa 1.12
    */
   function deactivate() {
-    
+	
   }
 
   /**
@@ -154,7 +153,7 @@ class TabulaRasa {
    * @return void
    */
   function setup() {
-    
+	
   }
 
   /**
@@ -163,22 +162,22 @@ class TabulaRasa {
    * @return void
    */
   function cleanup_header() {
-    remove_action('wp_head', 'wp_generator');
-    remove_action('wp_head', 'feed_links', 2);
-    remove_action('wp_head', 'feed_links_extra', 3);
-    remove_action('wp_head', 'rsd_link');
-    remove_action('wp_head', 'wlwmanifest_link');
-    remove_action('wp_head', 'index_rel_link');
-    remove_action('wp_head', 'parent_post_rel_link', 10, 0);
-    remove_action('wp_head', 'start_post_rel_link', 10, 0);
-    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
-    remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
-    remove_action('wp_head', 'feed_links_extra', 2);
-    remove_action('wp_head', 'feed_links_extra', 3);
-    add_filter('use_default_gallery_style', '__return_false');
-    add_filter('style_loader_tag', array(&$this, 'cleanup_type'), 10);
-    add_filter('wp_title', array(&$this, 'filter_wp_title'), 10, 2);
-    add_action('widgets_init', array(&$this, 'remove_recent_comments_style'));
+	remove_action( 'wp_head', 'wp_generator' );
+	remove_action( 'wp_head', 'feed_links', 2 );
+	remove_action( 'wp_head', 'feed_links_extra', 3 );
+	remove_action( 'wp_head', 'rsd_link' );
+	remove_action( 'wp_head', 'wlwmanifest_link' );
+	remove_action( 'wp_head', 'index_rel_link' );
+	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
+	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
+	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+	remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
+	remove_action( 'wp_head', 'feed_links_extra', 2 );
+	remove_action( 'wp_head', 'feed_links_extra', 3 );
+	add_filter( 'use_default_gallery_style', '__return_false' );
+	add_filter( 'style_loader_tag', array( $this, 'cleanup_type' ), 10 );
+	add_filter( 'wp_title', array( $this, 'filter_wp_title' ), 10, 2 );
+	add_action( 'widgets_init', array( $this, 'remove_recent_comments_style' ) );
   }
 
   /**
@@ -187,8 +186,8 @@ class TabulaRasa {
    * @return void
    */
   function cleanup_nav() {
-    add_filter('wp_nav_menu', array(&$this, 'cleanup_nav_menu'));
-    add_filter('wp_page_menu', array(&$this, 'cleanup_nav_menu'));
+	add_filter( 'wp_nav_menu', array( $this, 'cleanup_nav_menu' ) );
+	add_filter( 'wp_page_menu', array( $this, 'cleanup_nav_menu' ) );
   }
 
   /**
@@ -197,8 +196,8 @@ class TabulaRasa {
    * @return void
    */
   function register_widgets() {
-    require_once(locate_template('/lib/classes/widgets.php'));
-    register_widget('TabulaRasa_Twitter_Widget');
+	require_once(locate_template( '/lib/classes/widgets.php' ));
+	register_widget( 'TabulaRasa_Twitter_Widget' );
   }
 
   /**
@@ -208,7 +207,7 @@ class TabulaRasa {
    * @return int
    */
   function get_excerpt_length() {
-    return (int) $this->settings['excerpt_length'];
+	return (int) $this->settings[ 'excerpt_length' ];
   }
 
   /**
@@ -218,8 +217,8 @@ class TabulaRasa {
    * @param string $more
    * @return string
    */
-  function auto_excerpt_more($more) {
-    return ' &hellip;' . $this->continue_reading_link();
+  function auto_excerpt_more( $more ) {
+	return ' &hellip;' . $this->continue_reading_link();
   }
 
   /**
@@ -229,7 +228,7 @@ class TabulaRasa {
    * @return string "Continue Reading" link
    */
   function continue_reading_link() {
-    return ' <a href="' . get_permalink() . '">' . $this->settings['continue_reading_link'] . '</a>';
+	return ' <a href="' . get_permalink() . '">' . $this->settings[ 'continue_reading_link' ] . '</a>';
   }
 
   /**
@@ -238,11 +237,11 @@ class TabulaRasa {
    * @since Tabula Rasa 1.1
    * @return string Excerpt with a pretty "Continue Reading" link
    */
-  function custom_excerpt_more($output) {
-    if (has_excerpt() && !is_attachment()) {
-      $output .= $this->continue_reading_link();
-    }
-    return $output;
+  function custom_excerpt_more( $output ) {
+	if ( has_excerpt() && !is_attachment() ) {
+	  $output .= $this->continue_reading_link();
+	}
+	return $output;
   }
 
   /**
@@ -251,41 +250,39 @@ class TabulaRasa {
    * @return void
    */
   function bulletproof_jquery() {
-    global $wp_scripts;
-    $jquery_version = '';
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? 'https' : 'http';
-    if (isset($wp_scripts)) {
-      $jquery_version = $wp_scripts->registered['jquery']->ver;
-    }
-    $url = $protocol . '://ajax.googleapis.com/ajax/libs/jquery/' . $jquery_version . '/jquery.min.js';
-    wp_deregister_script('jquery');
-    if (get_transient('google_jquery') == true) {
-      wp_register_script('jquery', $url, array(), $jquery_version, true);
-    }
-    else {
-      $resp = wp_remote_head($url);
-      if (!is_wp_error($resp) && 200 == $resp['response']['code']) {
-        set_transient('google_jquery', true, 60 * 5);
-        wp_register_script('jquery', $url, array(), $jquery_version, true);
-      }
-      else {
-        set_transient('google_jquery', false, 60 * 5);
-        $url = get_bloginfo('wpurl') . '/wp-includes/js/jquery/jquery.js';
-        wp_register_script('jquery', $url, array(), $jquery_version, true);
-      }
-    }
-    wp_enqueue_script('jquery');
+	global $wp_scripts;
+	$jquery_version	 = '';
+	$protocol		 = (!empty( $_SERVER[ 'HTTPS' ] ) && $_SERVER[ 'HTTPS' ] !== 'off' || $_SERVER[ 'SERVER_PORT' ] == 443) ? 'https' : 'http';
+	if ( isset( $wp_scripts ) ) {
+	  $jquery_version = $wp_scripts->registered[ 'jquery' ]->ver;
+	}
+	$url = $protocol . '://ajax.googleapis.com/ajax/libs/jquery/' . $jquery_version . '/jquery.min.js';
+	wp_deregister_script( 'jquery' );
+	if ( get_transient( 'google_jquery' ) == true ) {
+	  wp_register_script( 'jquery', $url, array(), $jquery_version, true );
+	} else {
+	  $resp = wp_remote_head( $url );
+	  if ( !is_wp_error( $resp ) && 200 == $resp[ 'response' ][ 'code' ] ) {
+		set_transient( 'google_jquery', true, 60 * 5 );
+		wp_register_script( 'jquery', $url, array(), $jquery_version, true );
+	  } else {
+		set_transient( 'google_jquery', false, 60 * 5 );
+		$url = get_bloginfo( 'wpurl' ) . '/wp-includes/js/jquery/jquery.js';
+		wp_register_script( 'jquery', $url, array(), $jquery_version, true );
+	  }
+	}
+	wp_enqueue_script( 'jquery' );
   }
-  
+
   /**
    * Removes the auto-generated versioning from script and style URLs for external caching
    * 
    * @param string $url
    * @return string
    */
-  function remove_script_version($url) {
-	$split = explode('?', $url);
-	return $split[0];
+  function remove_script_version( $url ) {
+	$split = explode( '?', $url );
+	return $split[ 0 ];
   }
 
   /**
@@ -297,33 +294,33 @@ class TabulaRasa {
    * @param string $separator
    * @return string
    */
-  function filter_wp_title($title, $separator) {
+  function filter_wp_title( $title, $separator ) {
 
-    if (is_feed()) {
-      return $title;
-    }
+	if ( is_feed() ) {
+	  return $title;
+	}
 
-    global $paged, $page;
+	global $paged, $page;
 
-    $site_name = get_bloginfo('name', 'display');
-    $site_description = get_bloginfo('description', 'display');
+	$site_name			 = get_bloginfo( 'name', 'display' );
+	$site_description	 = get_bloginfo( 'description', 'display' );
 
-    if (is_search()) {
-      $title = sprintf(__('Search results for %s', $this->slug), '"' . get_search_query() . '"');
-      if ($paged >= 2)
-        $title .= ' ' . $separator . ' ' . sprintf(__('Page %s', $this->slug), $paged);
-      $title .= ' ' . $separator . ' ' . $site_name;
-      return $title;
-    }
+	if ( is_search() ) {
+	  $title	 = sprintf( __( 'Search results for %s', $this->slug ), '"' . get_search_query() . '"' );
+	  if ( $paged >= 2 )
+		$title	 .= ' ' . $separator . ' ' . sprintf( __( 'Page %s', $this->slug ), $paged );
+	  $title	 .= ' ' . $separator . ' ' . $site_name;
+	  return $title;
+	}
 
-    if ($site_description && (is_home())) {
-      $title .= $site_description . ' ' . $separator;
-    }
-    if ($paged >= 2 || $page >= 2) {
-      $title .= ' ' . $separator . ' ' . sprintf(__('Page %s', $this->slug), max($paged, $page));
-    }
-    $title .= ' ' . $site_name;
-    return $title;
+	if ( $site_description && (is_home()) ) {
+	  $title .= $site_description . ' ' . $separator;
+	}
+	if ( $paged >= 2 || $page >= 2 ) {
+	  $title .= ' ' . $separator . ' ' . sprintf( __( 'Page %s', $this->slug ), max( $paged, $page ) );
+	}
+	$title .= ' ' . $site_name;
+	return $title;
   }
 
   /**
@@ -332,8 +329,8 @@ class TabulaRasa {
    * @param string $src
    * @return string
    */
-  function cleanup_type($src) {
-    return str_replace("type='text/css'", '', $src);
+  function cleanup_type( $src ) {
+	return str_replace( "type='text/css'", '', $src );
   }
 
   /**
@@ -342,22 +339,22 @@ class TabulaRasa {
    * @return void
    */
   function remove_recent_comments_style() {
-    global $wp_widget_factory;
-    remove_action('wp_head', array(
-        $wp_widget_factory->widgets['WP_Widget_Recent_Comments'],
-        'recent_comments_style'
-            )
-    );
+	global $wp_widget_factory;
+	remove_action( 'wp_head', array(
+		$wp_widget_factory->widgets[ 'WP_Widget_Recent_Comments' ],
+		'recent_comments_style'
+	)
+	);
   }
 
   /**
    * Show home link in wp_page_menu() by default
-	 * 
-	 * @param array $args
+   * 
+   * @param array $args
    */
-  function page_menu_args($args) {
-    $args['show_home'] = true;
-    return $args;
+  function page_menu_args( $args ) {
+	$args[ 'show_home' ] = true;
+	return $args;
   }
 
   /**
@@ -366,19 +363,19 @@ class TabulaRasa {
    * @param string $menu
    * @return string
    */
-  function cleanup_nav_menu($menu) {
-    $replace = array(
-        'current-menu-item' => 'active',
-        'current-menu-parent' => 'active',
-        'current-menu-ancestor' => 'active',
-        'current_page_item' => 'active',
-        'current_page_parent' => 'active',
-        'current_page_ancestor' => 'active',
-        'page_item_has_children' => 'parent'
-    );
+  function cleanup_nav_menu( $menu ) {
+	$replace = array(
+		'current-menu-item'		 => 'active',
+		'current-menu-parent'	 => 'active',
+		'current-menu-ancestor'	 => 'active',
+		'current_page_item'		 => 'active',
+		'current_page_parent'	 => 'active',
+		'current_page_ancestor'	 => 'active',
+		'page_item_has_children' => 'parent'
+	);
 
-    $menu = str_replace(array_keys($replace), $replace, $menu);
-    return $menu;
+	$menu = str_replace( array_keys( $replace ), $replace, $menu );
+	return $menu;
   }
 
   /**
@@ -387,9 +384,9 @@ class TabulaRasa {
    * @param string $html
    * @return string
    */
-  function remove_image_dimensions($html) {
-    $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
-    return $html;
+  function remove_image_dimensions( $html ) {
+	$html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+	return $html;
   }
 
   /**
@@ -398,29 +395,29 @@ class TabulaRasa {
    * @param array $contact_methods
    * @return array
    */
-  function update_contact_methods($contact_methods) {
-    $new_methods = array(
-        'twitter' => 'Twitter',
-        'googleplus' => 'Google+',
-        'facebook' => 'Facebook',
-        'linkedin' => 'LinkedIn',
-        'appdotnet' => 'App.net'
-    );
-    foreach ($new_methods as $key => $value) {
-      if (!isset($contact_methods[$key])) {
-        $contact_methods[$key] = $value;
-      }
-    }
-    $remove_methods = array(
-        'aim',
-        'yim',
-        'jabber'
-    );
-    foreach ($remove_methods as $method) {
-      unset($contact_methods[$method]);
-    }
+  function update_contact_methods( $contact_methods ) {
+	$new_methods = array(
+		'twitter'	 => 'Twitter',
+		'googleplus' => 'Google+',
+		'facebook'	 => 'Facebook',
+		'linkedin'	 => 'LinkedIn',
+		'appdotnet'	 => 'App.net'
+	);
+	foreach ( $new_methods as $key => $value ) {
+	  if ( !isset( $contact_methods[ $key ] ) ) {
+		$contact_methods[ $key ] = $value;
+	  }
+	}
+	$remove_methods = array(
+		'aim',
+		'yim',
+		'jabber'
+	);
+	foreach ( $remove_methods as $method ) {
+	  unset( $contact_methods[ $method ] );
+	}
 
-    return $contact_methods;
+	return $contact_methods;
   }
 
   /**
@@ -429,42 +426,42 @@ class TabulaRasa {
    * @since TabulaRasa 1.11
    * @param object $admin_bar
    */
-  function dev_toolbar_items($admin_bar) {
-    if (current_user_can('manage_options') && WP_DEBUG === true) {
-      $admin_bar->add_node(array(
-          'id' => 'tr-dev-tools',
-          'title' => 'TabulaRasa Dev Tools',
-          'href' => '#',
-          'meta' => array(
-              'title' => __('Dev Tools'),
-          ),
-      ));
-      if (!is_admin()) {
-        global $wp_query;
-        $admin_bar->add_node(
-                array(
-                    'id' => 'tr-dev-grid-overlay',
-                    'parent' => 'tr-dev-tools',
-                    'title' => __('Grid Overlay'),
-                    'href' => '#',
-                    'meta' => array(
-                        'title' => __('Show the grid overlay'),
-                    )
-                )
-        );
-        $admin_bar->add_node(
-                array(
-                    'id' => 'tr-dev-current-template',
-                    'parent' => 'tr-dev-tools',
-                    'title' => __('Template') . ': ' . $this->dev['current_template'],
-                    'href' => admin_url('theme-editor.php?file=' . $this->dev['current_template'] . '&amp;theme=' . $this->theme->name),
-                    'meta' => array(
-                        'title' => __('Edit this template'),
-                    )
-                )
-        );
-      }
-    }
+  function dev_toolbar_items( $admin_bar ) {
+	if ( current_user_can( 'manage_options' ) && WP_DEBUG === true ) {
+	  $admin_bar->add_node( array(
+		  'id'	 => 'tr-dev-tools',
+		  'title'	 => 'TabulaRasa Dev Tools',
+		  'href'	 => '#',
+		  'meta'	 => array(
+			  'title' => __( 'Dev Tools' ),
+		  ),
+	  ) );
+	  if ( !is_admin() ) {
+		global $wp_query;
+		$admin_bar->add_node(
+		array(
+			'id'	 => 'tr-dev-grid-overlay',
+			'parent' => 'tr-dev-tools',
+			'title'	 => __( 'Grid Overlay' ),
+			'href'	 => '#',
+			'meta'	 => array(
+				'title' => __( 'Show the grid overlay' ),
+			)
+		)
+		);
+		$admin_bar->add_node(
+		array(
+			'id'	 => 'tr-dev-current-template',
+			'parent' => 'tr-dev-tools',
+			'title'	 => __( 'Template' ) . ': ' . $this->dev[ 'current_template' ],
+			'href'	 => admin_url( 'theme-editor.php?file=' . $this->dev[ 'current_template' ] . '&amp;theme=' . $this->theme->name ),
+			'meta'	 => array(
+				'title' => __( 'Edit this template' ),
+			)
+		)
+		);
+	  }
+	}
   }
 
   /**
@@ -476,9 +473,9 @@ class TabulaRasa {
    * @return string
    * @since TabulaRasa 1.12
    */
-  function dev_template_id($template) {
-    $this->dev['current_template'] = basename($template);
-    return $template;
+  function dev_template_id( $template ) {
+	$this->dev[ 'current_template' ] = basename( $template );
+	return $template;
   }
 
   /**
@@ -487,10 +484,10 @@ class TabulaRasa {
    * @since TabulaRasa 1.11
    */
   function dev_tools() {
-    wp_enqueue_script('jquery');
-    add_action('wp_footer', array(&$this, 'dev_grid_overlay'), 100);
-    wp_register_style('tabularasa-dev', get_stylesheet_directory_uri() . '/css/dev.css');
-    wp_enqueue_style('tabularasa-dev');
+	wp_enqueue_script( 'jquery' );
+	add_action( 'wp_footer', array( $this, 'dev_grid_overlay' ), 100 );
+	wp_register_style( 'tabularasa-dev', get_stylesheet_directory_uri() . '/css/dev.css' );
+	wp_enqueue_style( 'tabularasa-dev' );
   }
 
   /**
@@ -499,45 +496,45 @@ class TabulaRasa {
    * @since TabulaRasa 1.11
    */
   function dev_grid_overlay() {
-    if (!is_admin()) {
-      ?>
-      <div class="dev-overlay">
-        <div class="container">
-          <div class="grid1 first">
-          </div>
-          <div class="grid1">
-          </div>
-          <div class="grid1">
-          </div>
-          <div class="grid1">
-          </div>
-          <div class="grid1">
-          </div>
-          <div class="grid1">
-          </div>
-          <div class="grid1">
-          </div>
-          <div class="grid1">
-          </div>
-          <div class="grid1">
-          </div>
-          <div class="grid1">
-          </div>
-          <div class="grid1">
-          </div>
-          <div class="grid1">
-          </div>
-        </div>
-      </div>
-      <script>
-        jQuery(document).ready(function() {
-          jQuery('#wp-admin-bar-tr-dev-grid-overlay a').click(function() {
-            jQuery('.dev-overlay').toggle();
-          });
-        });
-      </script>
-      <?php
-    }
+	if ( !is_admin() ) {
+	  ?>
+	  <div class="dev-overlay">
+	    <div class="container">
+	  	<div class="grid1 first">
+	  	</div>
+	  	<div class="grid1">
+	  	</div>
+	  	<div class="grid1">
+	  	</div>
+	  	<div class="grid1">
+	  	</div>
+	  	<div class="grid1">
+	  	</div>
+	  	<div class="grid1">
+	  	</div>
+	  	<div class="grid1">
+	  	</div>
+	  	<div class="grid1">
+	  	</div>
+	  	<div class="grid1">
+	  	</div>
+	  	<div class="grid1">
+	  	</div>
+	  	<div class="grid1">
+	  	</div>
+	  	<div class="grid1">
+	  	</div>
+	    </div>
+	  </div>
+	  <script>
+	    jQuery( document ).ready( function () {
+	  	jQuery( '#wp-admin-bar-tr-dev-grid-overlay a' ).click( function () {
+	  	  jQuery( '.dev-overlay' ).toggle();
+	  	} );
+	    } );
+	  </script>
+	  <?php
+	}
   }
 
 }
