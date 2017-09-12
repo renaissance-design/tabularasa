@@ -33,9 +33,7 @@ class TabulaRasa {
 	$this->dev = array();
 
 	add_action( 'init', array( $this, 'init' ) );
-
 	add_action( 'after_setup_theme', array( $this, 'setup' ) );
-
 	add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 
 	require_once(locate_template( '/lib/classes/options.php' ));
@@ -44,9 +42,12 @@ class TabulaRasa {
 	if ( !class_exists( 'SmartMetaBox' ) ) {
 	  require_once(locate_template( '/lib/classes/meta.php' ));
 	}
+	
+	if(comments_open()) {
+	  $this->enable_comment_editor();
+	}
 
 	add_action( 'widgets_init', array( $this, 'register_widgets' ) );
-
 	add_action( 'after_switch_theme', array( $this, 'activate' ), 10, 2 );
 	add_action( 'switch_theme', array( $this, 'deactivate' ), 10, 2 );
   }
@@ -418,8 +419,84 @@ class TabulaRasa {
 	foreach ( $remove_methods as $method ) {
 	  unset( $contact_methods[ $method ] );
 	}
-
 	return $contact_methods;
+  }
+
+  /**
+   * Adds the hooks for the comment editor
+   * 
+   * @since Tabula Rasa 2.0
+   */
+  function enable_comment_editor() {
+	add_filter( 'comment_form_field_comment', array( $this, 'comment_editor' ) );
+	add_action( 'wp_enqueue_scripts', array( $this, 'comment_editor_jquery' ) );
+	add_filter( 'comment_reply_link', array( $this, 'comment_reply_link' ) );
+	add_action( 'wp_foot', array( $this, 'reply_form_editor_js' ) );
+  }
+
+  /**
+   * Generates the markup for the comments editor, attributing media to the parent post
+   * 
+   * @global object $post
+   * @return string
+   * @since Tabula Rasa 2.0
+   */
+  function comment_editor() {
+	global $post;
+	ob_start();
+	wp_editor( '', 'comment', array(
+		'textarea_rows'	 => 15,
+		'teeny'			 => true,
+		'quicktags'		 => false,
+		'media_buttons'	 => false
+	) );
+	$editor	 = ob_get_contents();
+	ob_end_clean();
+	$editor	 = str_replace( 'post_id=0', 'post_id=' . get_the_ID(), $editor );
+	return $editor;
+  }
+
+  /**
+   * Adds data-onclick to the comment reply link
+   * 
+   * @param string $link
+   * @return string
+   * @since Tabula Rasa 2.0
+   */
+  function comment_reply_link( $link ) {
+	return str_replace( 'onclick=', 'data-onclick=', $link );
+  }
+
+  /**
+   * Ensures jQuery is enqueued
+   * 
+   * @since Tabula Rasa 2.0
+   */
+  function comment_editor_jquery() {
+	wp_enqueue_script( 'jquery' );
+  }
+
+  /**
+   * Outputs the JS to apply the editor to the comment form
+   * 
+   * @since Tabula Rasa 2.0
+   */
+  function reply_form_editor_js() {
+	?>
+	<script type="text/javascript">
+	  jQuery( function ( $ ) {
+		$( '.comment-reply-link' ).click( function ( e ) {
+		  e.preventDefault();
+		  var args = $( this ).data( 'onclick' );
+		  args = args.replace( /.*\(|\)/gi, '' ).replace( /\"|\s+/g, '' );
+		  args = args.split( ',' );
+		  tinymce.EditorManager.execCommand( 'mceRemoveEditor', true, 'comment' );
+		  addComment.moveForm.apply( addComment, args );
+		  tinymce.EditorManager.execCommand( 'mceAddEditor', true, 'comment' );
+		} );
+	  } );
+	</script>
+	<?php
   }
 
   /**
