@@ -121,8 +121,6 @@ class TabulaRasa {
 	  add_action( 'admin_bar_menu', array( $this, 'dev_toolbar_items' ), 100 );
 	  add_filter( 'template_include', array( $this, 'dev_template_id' ), 1000 );
 	  add_filter( 'post_thumbnail_html', array( $this, 'remove_image_dimensions' ), 10 );
-	  add_filter( 'script_loader_src', array( $this, 'remove_script_version' ), 15, 1 );
-	  add_filter( 'style_loader_src', array( $this, 'remove_script_version' ), 15, 1 );
 	  $this->cleanup_header();
 	  $this->cleanup_nav();
 	  $this->dev_tools();
@@ -178,6 +176,8 @@ class TabulaRasa {
 	add_filter( 'style_loader_tag', array( $this, 'cleanup_type' ), 10 );
 	add_filter( 'wp_title', array( $this, 'filter_wp_title' ), 10, 2 );
 	add_action( 'widgets_init', array( $this, 'remove_recent_comments_style' ) );
+	add_filter( 'script_loader_src', array( $this, 'remove_script_version' ), 15, 1 );
+	add_filter( 'style_loader_src', array( $this, 'remove_script_version' ), 15, 1 );
   }
 
   /**
