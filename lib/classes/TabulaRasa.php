@@ -42,10 +42,6 @@ class TabulaRasa {
 	if ( !class_exists( 'SmartMetaBox' ) ) {
 	  require_once(locate_template( '/lib/classes/meta.php' ));
 	}
-	
-	if(comments_open()) {
-	  $this->enable_comment_editor();
-	}
 
 	add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 	add_action( 'after_switch_theme', array( $this, 'activate' ), 10, 2 );
@@ -124,6 +120,9 @@ class TabulaRasa {
 	  add_filter( 'post_thumbnail_html', array( $this, 'remove_image_dimensions' ), 10 );
 	  $this->cleanup_header();
 	  $this->cleanup_nav();
+	  if ( comments_open() ) {
+		$this->enable_comment_editor();
+	  }
 	  $this->dev_tools();
 	}
   }
